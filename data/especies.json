@@ -1,0 +1,193 @@
+[
+ {
+  "id": "cuba-22",
+  "comun": "Cuba 22",
+  "cientifico": "Cenchrus purpureus × C. americanus",
+  "cultivar": "OM-22",
+  "familia": "Poaceae",
+  "categoria": "graminea",
+  "uso": "Corte",
+  "nota": "Híbrido de alto rendimiento para forraje verde y ensilado; tolera sequía moderada.",
+  "eeas": [
+   "canaan",
+   "chincha",
+   "donoso",
+   "el-chira",
+   "los-cedros",
+   "vista-florida"
+  ]
+ },
+ {
+  "id": "maralfalfa",
+  "comun": "Maralfalfa",
+  "cientifico": "Cenchrus purpureus",
+  "cultivar": null,
+  "familia": "Poaceae",
+  "categoria": "graminea",
+  "uso": "Corte",
+  "nota": "Gramínea de porte alto para corte y acarreo; responde bien a riego y fertilización.",
+  "eeas": [
+   "canaan",
+   "chincha",
+   "donoso"
+  ]
+ },
+ {
+  "id": "mulato-ii",
+  "comun": "Mulato II",
+  "cientifico": "Urochloa híbrido",
+  "cultivar": "Mulato II",
+  "familia": "Poaceae",
+  "categoria": "graminea",
+  "uso": "Pastoreo / corte",
+  "nota": "Brachiaria híbrida con buena calidad nutritiva y tolerancia a sequía.",
+  "eeas": [
+   "el-chira",
+   "los-cedros",
+   "vista-florida"
+  ]
+ },
+ {
+  "id": "xaraes",
+  "comun": "Xaraés",
+  "cientifico": "Urochloa brizantha",
+  "cultivar": "Xaraés",
+  "familia": "Poaceae",
+  "categoria": "graminea",
+  "uso": "Pastoreo",
+  "nota": "Cultivar vigoroso, de rebrote rápido en época de lluvias.",
+  "eeas": [
+   "huarangopampa",
+   "vista-florida"
+  ]
+ },
+ {
+  "id": "marandu",
+  "comun": "Marandú",
+  "cientifico": "Urochloa brizantha",
+  "cultivar": "Marandú",
+  "familia": "Poaceae",
+  "categoria": "graminea",
+  "uso": "Pastoreo",
+  "nota": "Cultivar de amplia adaptación, resistente al salivazo.",
+  "eeas": [
+   "vista-florida"
+  ]
+ },
+ {
+  "id": "brs-kurumi",
+  "comun": "BRS Kurumi",
+  "cientifico": "Cenchrus purpureus",
+  "cultivar": "BRS Kurumi",
+  "familia": "Poaceae",
+  "categoria": "graminea",
+  "uso": "Pastoreo",
+  "nota": "Elefante de porte bajo apto para pastoreo directo, de alta digestibilidad.",
+  "eeas": [
+   "huarangopampa"
+  ]
+ },
+ {
+  "id": "alfalfa",
+  "comun": "Alfalfa",
+  "cientifico": "Medicago sativa",
+  "cultivar": null,
+  "familia": "Fabaceae",
+  "categoria": "leguminosa",
+  "uso": "Corte / heno",
+  "nota": "Leguminosa perenne de alto valor proteico; fija nitrógeno.",
+  "eeas": [
+   "canaan",
+   "chincha",
+   "donoso"
+  ]
+ },
+ {
+  "id": "centrosema",
+  "comun": "Centrosema",
+  "cientifico": "Centrosema macrocarpum",
+  "cultivar": null,
+  "familia": "Fabaceae",
+  "categoria": "leguminosa",
+  "uso": "Asociación / cobertura",
+  "nota": "Leguminosa trepadora usada en asociación y bajo dosel arbóreo.",
+  "eeas": [
+   "huarangopampa",
+   "vista-florida"
+  ]
+ },
+ {
+  "id": "stylosanthes",
+  "comun": "Stylosanthes",
+  "cientifico": "Stylosanthes guianensis",
+  "cultivar": null,
+  "familia": "Fabaceae",
+  "categoria": "leguminosa",
+  "uso": "Banco de proteína",
+  "nota": "Leguminosa tolerante a suelos pobres y sequía.",
+  "eeas": [
+   "el-chira",
+   "los-cedros"
+  ]
+ },
+ {
+  "id": "gliricidia",
+  "comun": "Gliricidia",
+  "cientifico": "Gliricidia sepium",
+  "cultivar": null,
+  "familia": "Fabaceae",
+  "categoria": "arbustiva",
+  "uso": "Ramoneo / cerco vivo",
+  "nota": "Arbórea forrajera de rebrote rápido; fuente de proteína en época seca.",
+  "eeas": [
+   "el-chira",
+   "huarangopampa",
+   "los-cedros"
+  ]
+ },
+ {
+  "id": "morera",
+  "comun": "Morera",
+  "cientifico": "Morus alba",
+  "cultivar": null,
+  "familia": "Moraceae",
+  "categoria": "arbustiva",
+  "uso": "Corte / ramoneo",
+  "nota": "Arbustiva de hoja muy digestible, apreciada en caprinos.",
+  "eeas": [
+   "canaan",
+   "chincha",
+   "donoso"
+  ]
+ },
+ {
+  "id": "titonia",
+  "comun": "Botón de oro",
+  "cientifico": "Tithonia diversifolia",
+  "cultivar": null,
+  "familia": "Asteraceae",
+  "categoria": "arbustiva",
+  "uso": "Corte / ramoneo",
+  "nota": "Arbustiva de crecimiento rápido con alto contenido de proteína.",
+  "eeas": [
+   "canaan",
+   "huarangopampa"
+  ]
+ },
+ {
+  "id": "tuna",
+  "comun": "Tuna forrajera",
+  "cientifico": "Opuntia ficus-indica",
+  "cultivar": null,
+  "familia": "Cactaceae",
+  "categoria": "suculenta",
+  "uso": "Reserva hídrica",
+  "nota": "Suculenta que aporta agua y energía en zonas áridas.",
+  "eeas": [
+   "chincha",
+   "donoso",
+   "el-chira",
+   "los-cedros"
+  ]
+ }
+]

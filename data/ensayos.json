@@ -1,0 +1,70 @@
+[
+ {
+  "id": "ssp-mango-centrosema",
+  "eea": "vista-florida",
+  "tipo": "Ensayo",
+  "titulo": "Sistema silvopastoril Mango / Centrosema",
+  "diseno": "32 parcelas de 16 m², 4 tratamientos × 8 repeticiones",
+  "tratamientos": [
+   "Mango / Centrosema",
+   "Mango / Testigo",
+   "Centrosema en monocultivo",
+   "Mango / Tara"
+  ],
+  "variables": [
+   "Cobertura",
+   "Biomasa",
+   "Diámetro de copa (QGIS, rectángulo orientado)"
+  ],
+  "estado": "En evaluación"
+ },
+ {
+  "id": "cuba22-estres-hidrico",
+  "eea": "vista-florida",
+  "tipo": "Ensayo",
+  "titulo": "Estrés hídrico en Cuba 22",
+  "diseno": "Parcelas de corte escalonado para el núcleo caprino",
+  "tratamientos": [
+   "Láminas de riego"
+  ],
+  "variables": [
+   "SPAD",
+   "Humedad de suelo (TDR)",
+   "Multiespectral RedEdge",
+   "Carta de color LCC-CB22-v1"
+  ],
+  "estado": "En evaluación"
+ },
+ {
+  "id": "bloque-brachiarias",
+  "eea": "vista-florida",
+  "tipo": "Parcela demostrativa",
+  "titulo": "Bloque demostrativo de Brachiarias",
+  "diseno": "6 150 m² en 3 franjas, suelo alcalino (pH 7,5–8,2)",
+  "tratamientos": [
+   "Mulato II",
+   "Xaraés",
+   "Marandú"
+  ],
+  "variables": [
+   "Establecimiento",
+   "Altura",
+   "Producción de materia seca"
+  ],
+  "estado": "Instalado"
+ },
+ {
+  "id": "protocolo-rgb",
+  "eea": null,
+  "tipo": "Protocolo",
+  "titulo": "Diagnóstico rápido de forraje con dron RGB",
+  "diseno": "Vuelo Mavic 2 Pro + cuadrantes de campo de calibración",
+  "tratamientos": [],
+  "variables": [
+   "Cobertura verde",
+   "Altura de dosel",
+   "Biomasa estimada"
+  ],
+  "estado": "Aplicable a toda la red"
+ }
+]

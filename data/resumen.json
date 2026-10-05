@@ -1,0 +1,52 @@
+{
+ "eeas": 7,
+ "gradientes": 4,
+ "registros": 157,
+ "variedades": 108,
+ "especies_botanicas": 59,
+ "variedades_2024": 75,
+ "categorias": [
+  [
+   "Gramíneas",
+   50
+  ],
+  [
+   "Leguminosas",
+   37
+  ],
+  [
+   "Arbustivas",
+   10
+  ],
+  [
+   "Herbáceas",
+   7
+  ],
+  [
+   "Suculentas",
+   6
+  ]
+ ],
+ "gradientes_detalle": [
+  {
+   "id": "costa",
+   "nombre": "Costa árida",
+   "variedades": 30
+  },
+  {
+   "id": "bosque",
+   "nombre": "Bosque seco",
+   "variedades": 51
+  },
+  {
+   "id": "tropico",
+   "nombre": "Trópico húmedo",
+   "variedades": 20
+  },
+  {
+   "id": "andes",
+   "nombre": "Andes",
+   "variedades": 25
+  }
+ ]
+}
