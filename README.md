@@ -83,7 +83,7 @@ Con el repositorio abierto, presiona la tecla **`.`** (punto). Se abre **github.
 | Agregar un ensayo | `data/ensayos.json` |
 | Cambiar los textos del relato NDVI | `data/relato_ndvi.json` |
 | Poner la App de Earth Engine | `data/sitio.json` → `gee_app_url` |
-| Cambiar un color en todo el sitio | `assets/css/base.css`, bloque `:root` |
+| Cambiar un color en todo el sitio | `assets/css/base.css`, bloque `:root` (modo claro) y `:root[data-theme="dark"]` (modo oscuro) |
 | Corregir un ejemplar del herbario | `herbarios/vista-florida/ejemplares.csv` |
 | Corregir la descripción de una especie del herbario | `herbarios/vista-florida/especies.csv` |
 

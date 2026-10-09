@@ -11,6 +11,10 @@
   /* rampa NDVI (paleta Pastizal Herbal): suelo desnudo → dosel denso */
   --ndvi-0:#B84226; --ndvi-1:#D4A017; --ndvi-2:#A8D07C; --ndvi-3:#5F9D2D; --ndvi-4:#2E7A3A;
 }
+:root[data-theme="dark"]{
+  --rl-bg:#0F1612; --rl-panel:#18221C; --rl-card:rgba(24,34,28,.94); --rl-line:#2B3830;
+  --rl-fg:#E4ECE4; --rl-muted:#98A79C; --rl-land:#1C2721; --rl-border:#3A4A40;
+}
 
 /* resumen de estacionalidad */
 .season{display:grid;gap:14px}

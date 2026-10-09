@@ -168,7 +168,23 @@
     });
   };
 
+  /* ---------- interruptor de modo claro / oscuro ---------- */
+  function initTheme() {
+    var btn = U.$("#theme-toggle");
+    if (!btn) return;
+    var root = document.documentElement;
+    var sync = function () { btn.setAttribute("aria-pressed", root.getAttribute("data-theme") === "dark"); };
+    sync();
+    btn.addEventListener("click", function () {
+      var dark = root.getAttribute("data-theme") !== "dark";
+      if (dark) root.setAttribute("data-theme", "dark"); else root.removeAttribute("data-theme");
+      try { localStorage.setItem("jano-tema", dark ? "dark" : "light"); } catch (e) {}
+      sync();
+    });
+  }
+
   JANO.start = function () {
+    initTheme();
     var D = JANO.D;
     Promise.all(Object.keys(FILES).map(function (k) {
       return JANO.loadJSON(FILES[k]).then(function (j) { D[k] = j; });

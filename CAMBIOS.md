@@ -2,6 +2,9 @@
 
 Cada mejora queda anotada aquí con la referencia que la inspiró, para saber de dónde salió cada idea.
 
+## Octubre 2026 · versión 0.3.2
+- Interruptor de modo claro / oscuro en la barra superior. El sitio abre en modo claro y recuerda la elección de cada visitante en su navegador.
+
 ## Octubre 2026 · versión 0.3.1
 - Fondo claro fijo en todo el sitio, también en dispositivos con modo oscuro. El relato NDVI de Monitoreo pasa a fondo claro.
 

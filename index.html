@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Red JANO</title>
 <meta name="description" content="Red JANO — Jardines Agrostológicos como Nodos de Observación. Proyecto Caprino PROCAP · INIA.">
+<!-- Aplica el modo elegido antes de dibujar la página (evita un parpadeo) -->
+<script>try{if(localStorage.getItem("jano-tema")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -32,6 +34,11 @@
       <a href="#monitoreo" data-nav="monitoreo">Monitoreo</a>
       <a href="#herbarios" data-nav="herbarios">Herbarios</a>
     </nav>
+    <button class="theme-toggle" type="button" id="theme-toggle" aria-pressed="false" aria-label="Modo oscuro" title="Cambiar entre modo claro y oscuro">
+      <span class="knob" aria-hidden="true"></span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <span class="lbl">Modo oscuro</span>
+    </button>
   </div>
 </header>
 <div class="demo-note"><div class="wrap"><b>Versión de demostración.</b> Las cifras del inventario 2026 y los datos del herbario de Vista Florida son reales. Las coordenadas son referenciales; las parcelas, la asignación de especies por jardín y las series NDVI son ilustrativas.</div></div>

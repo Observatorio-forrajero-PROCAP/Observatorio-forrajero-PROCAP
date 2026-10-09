@@ -1,8 +1,9 @@
 /* ==========================================================================
    Red JANO · hoja de estilos base
    Colores y tipografías del sitio. Para cambiar un color en todo el sitio,
-   cambia su valor aquí. El sitio usa siempre el tema claro, aunque el
-   dispositivo del visitante esté en modo oscuro.
+   cambia su valor aquí. Bloque :root = modo claro (el que se ve al entrar).
+   Bloque :root[data-theme="dark"] = modo oscuro, que el visitante activa
+   con el interruptor de la barra superior.
    ========================================================================== */
 :root{
   color-scheme:light;
@@ -27,6 +28,15 @@
   --radius:6px;
 }
 
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#111814; --surface:#18211C; --panel:#1E2923; --line:#2F3D35;
+  --fg:#E2EADF; --muted:#9BAA9F; --accent:#7DBE95; --accent-soft:#22402F; --on-accent:#0F1912;
+  --g-costa:#E0AE52; --g-bosque:#D28462; --g-tropico:#55BFA2; --g-andes:#8E9FD8;
+  --t-ensayo:#D28462; --t-demo:#7DBE95; --water:#0C120F; --land:#1B241F;
+  --ochre:#D9A85C; --ok:#7CC593; --warn:#E39A62; --info:#8EB4D8; --neutral:#A3ABA4; --sheet:#202823;
+}
+
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:var(--step-0);line-height:1.6;margin:0}
@@ -48,7 +58,7 @@ a{color:var(--accent);text-underline-offset:3px}
 .brand{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--fg);white-space:nowrap}
 .brand b{font-family:var(--f-display);font-size:1.25rem;font-weight:800;font-stretch:80%;letter-spacing:.01em}
 .brand span{font-family:var(--f-display);font-size:var(--step--1);color:var(--muted);font-weight:500}
-.nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;min-width:0}
+.nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;min-width:0;flex:1}
 .nav::-webkit-scrollbar{display:none}
 .nav a{font-family:var(--f-display);font-weight:600;font-size:.9375rem;color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:var(--radius);white-space:nowrap}
 .nav a:hover{color:var(--fg);background:var(--panel)}
@@ -217,3 +227,14 @@ footer .wrap{padding-block:20px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
 .view{scroll-margin-top:80px}
 .error-box{border:1px solid var(--warn);color:var(--fg);background:var(--panel);border-radius:var(--radius);padding:14px 16px;font-family:var(--f-display);font-size:.9375rem}
 .view>*{min-width:0}
+
+/* interruptor de modo claro / oscuro */
+.theme-toggle{flex:none;display:inline-flex;align-items:center;gap:8px;font-family:var(--f-display);font-size:.8125rem;font-weight:600;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:4px 10px 4px 4px;cursor:pointer}
+.theme-toggle:hover{color:var(--fg);border-color:var(--accent)}
+.theme-toggle .knob{position:relative;width:34px;height:20px;border-radius:999px;background:var(--line);transition:background .2s}
+.theme-toggle .knob::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--surface);box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .2s}
+.theme-toggle[aria-pressed="true"] .knob{background:var(--accent)}
+.theme-toggle[aria-pressed="true"] .knob::after{transform:translateX(14px)}
+.theme-toggle svg{width:14px;height:14px;display:block}
+@media (max-width:640px){.theme-toggle .lbl{display:none}.theme-toggle{padding-right:4px}.topbar .wrap{gap:12px}}
+@media (prefers-reduced-motion:reduce){.theme-toggle .knob,.theme-toggle .knob::after{transition:none}}

@@ -388,9 +388,5 @@
     map.setPaintProperty("eeas", "circle-color", gradExpr(c));
     map.setPaintProperty("eeas", "circle-stroke-color", c.bg);
   }
-  if (window.matchMedia) {
-    var mq = matchMedia("(prefers-color-scheme: dark)");
-    if (mq.addEventListener) mq.addEventListener("change", recolorMap);
-  }
   new MutationObserver(recolorMap).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 })();
