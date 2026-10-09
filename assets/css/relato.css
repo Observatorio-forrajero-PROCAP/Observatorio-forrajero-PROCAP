@@ -1,13 +1,13 @@
 /* ==========================================================================
    Monitoreo · relato NDVI con desplazamiento
-   El relato es un "escenario" oscuro fijo (igual en tema claro y oscuro):
+   El relato es un "escenario" con fondo propio:
    a la izquierda, el mapa que se queda quieto; a la derecha, los meses que
    pasan al bajar. Idea tomada de "Berlin in Green" (Quarto + Closeread).
    ========================================================================== */
 :root{
-  /* escenario del relato (mismo aspecto en ambos temas) */
-  --rl-bg:#0F1612; --rl-panel:#18221C; --rl-card:rgba(24,34,28,.94); --rl-line:#2B3830;
-  --rl-fg:#E4ECE4; --rl-muted:#98A79C; --rl-land:#1C2721; --rl-border:#3A4A40;
+  /* escenario del relato */
+  --rl-bg:#EEF2EA; --rl-panel:#FFFFFF; --rl-card:rgba(255,255,255,.96); --rl-line:#D3DBCD;
+  --rl-fg:#17231C; --rl-muted:#56665B; --rl-land:#FFFFFF; --rl-border:#9FB09A;
   /* rampa NDVI (paleta Pastizal Herbal): suelo desnudo → dosel denso */
   --ndvi-0:#B84226; --ndvi-1:#D4A017; --ndvi-2:#A8D07C; --ndvi-3:#5F9D2D; --ndvi-4:#2E7A3A;
 }

@@ -2,6 +2,9 @@
 
 Cada mejora queda anotada aquí con la referencia que la inspiró, para saber de dónde salió cada idea.
 
+## Octubre 2026 · versión 0.3.1
+- Fondo claro fijo en todo el sitio, también en dispositivos con modo oscuro. El relato NDVI de Monitoreo pasa a fondo claro.
+
 ## Octubre 2026 · versión 0.3
 - **Fusión** del sitio de jardines agrostológicos y del demo de herbarios en un solo sitio, con un menú, un diseño y una navegación comunes.
 - **Herbarios** pasan de datos incrustados en el HTML a archivos editables: `ejemplares.csv` (Darwin Core), `especies.csv`, `candidatos.csv` y `herbario.json`. Cada estación tendrá su propia carpeta en `herbarios/`.

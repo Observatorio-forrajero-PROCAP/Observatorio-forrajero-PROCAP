@@ -1,12 +1,13 @@
 /* ==========================================================================
    Red JANO · hoja de estilos base
    Colores y tipografías del sitio. Para cambiar un color en todo el sitio,
-   cambia su valor aquí (bloque :root = tema claro; los dos bloques
-   siguientes = tema oscuro).
+   cambia su valor aquí. El sitio usa siempre el tema claro, aunque el
+   dispositivo del visitante esté en modo oscuro.
    ========================================================================== */
 :root{
+  color-scheme:light;
   /* superficies y texto */
-  --bg:#F1F4EE; --surface:#FBFCF9; --panel:#E6EBE1; --line:#CBD4C5;
+  --bg:#F7F9F4; --surface:#FFFFFF; --panel:#EAEFE5; --line:#D3DBCD;
   --fg:#17231C; --muted:#56665B;
   /* acento institucional (Pastizal Institucional, verde medio) */
   --accent:#2D6A4F; --accent-soft:#D5E6D8; --on-accent:#F7FBF5;
@@ -25,20 +26,6 @@
   --step--1:.8125rem; --step-0:1rem; --step-1:1.1875rem; --step-2:1.5rem; --step-3:2.125rem; --step-4:3rem;
   --radius:6px;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#111814; --surface:#18211C; --panel:#1E2923; --line:#2F3D35;
-  --fg:#E2EADF; --muted:#9BAA9F; --accent:#7DBE95; --accent-soft:#22402F; --on-accent:#0F1912;
-  --g-costa:#E0AE52; --g-bosque:#D28462; --g-tropico:#55BFA2; --g-andes:#8E9FD8;
-  --t-ensayo:#D28462; --t-demo:#7DBE95; --water:#0C120F; --land:#1B241F;
-  --ochre:#D9A85C; --ok:#7CC593; --warn:#E39A62; --info:#8EB4D8; --neutral:#A3ABA4; --sheet:#202823;
-  color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#111814; --surface:#18211C; --panel:#1E2923; --line:#2F3D35;
-  --fg:#E2EADF; --muted:#9BAA9F; --accent:#7DBE95; --accent-soft:#22402F; --on-accent:#0F1912;
-  --g-costa:#E0AE52; --g-bosque:#D28462; --g-tropico:#55BFA2; --g-andes:#8E9FD8;
-  --t-ensayo:#D28462; --t-demo:#7DBE95; --water:#0C120F; --land:#1B241F;
-  --ochre:#D9A85C; --ok:#7CC593; --warn:#E39A62; --info:#8EB4D8; --neutral:#A3ABA4; --sheet:#202823;
-  color-scheme:dark}
 
 *{box-sizing:border-box}
 [hidden]{display:none!important}
