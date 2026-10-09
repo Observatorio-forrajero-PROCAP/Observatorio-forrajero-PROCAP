@@ -1,0 +1,44 @@
+[
+ {
+  "eea": "vista-florida",
+  "codigo": "VF",
+  "estado": "publicado",
+  "carpeta": "herbarios/vista-florida"
+ },
+ {
+  "eea": "el-chira",
+  "codigo": "",
+  "estado": "en preparación",
+  "carpeta": ""
+ },
+ {
+  "eea": "los-cedros",
+  "codigo": "",
+  "estado": "en preparación",
+  "carpeta": ""
+ },
+ {
+  "eea": "chincha",
+  "codigo": "",
+  "estado": "en preparación",
+  "carpeta": ""
+ },
+ {
+  "eea": "donoso",
+  "codigo": "",
+  "estado": "en preparación",
+  "carpeta": ""
+ },
+ {
+  "eea": "huarangopampa",
+  "codigo": "",
+  "estado": "en preparación",
+  "carpeta": ""
+ },
+ {
+  "eea": "canaan",
+  "codigo": "",
+  "estado": "en preparación",
+  "carpeta": ""
+ }
+]

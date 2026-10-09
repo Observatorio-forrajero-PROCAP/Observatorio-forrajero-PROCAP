@@ -1,0 +1,46 @@
+{
+ "codigo": "VF",
+ "eea": "vista-florida",
+ "nombre": "Herbario de la EEA Vista Florida",
+ "institucion": "PROCAP · INIA",
+ "distrito": "Picsi, Chiclayo",
+ "region": "Lambayeque",
+ "altitud_m": 39,
+ "curador": "Armando Vega López",
+ "titulo": "Flora silvestre del bosque seco de Lambayeque",
+ "presentacion": "Colección de referencia de la EEA Vista Florida, con énfasis en especies de interés forrajero para la ganadería caprina. Cada ficha reúne el ejemplar físico, su rótulo, la ubicación de colecta y la información taxonómica de la especie.",
+ "rotulo_encabezado": [
+  "HERBARIO DE LA EEA VISTA FLORIDA",
+  "PROCAP - INIA LAMBAYEQUE"
+ ],
+ "avance": {
+  "fecha": "2025-11-05",
+  "colectadas": 134,
+  "viables": 45,
+  "prensadas": 45,
+  "rotuladas": 40,
+  "montadas": 20
+ },
+ "observaciones_generales": [
+  "El reporte Word y la hoja ROTULOS usan numeraciones distintas (por ejemplo, Cordia lutea es VF-001 en el Word y VF-002 en el Excel). El sitio adopta la del Excel; conviene reimprimir los rótulos del Word con el código definitivo.",
+  "Nombre común repetido: \"Lentejilla\" figura para Rhynchosia minima (VF-005) y Delilia biflora (VF-017). Confirmar con informantes locales."
+ ],
+ "aviso": "Descripciones, origen e interés forrajero son preliminares y deben validarse antes de la publicación oficial.",
+ "referencias_mapa": [
+  [
+   "Chiclayo",
+   -6.7714,
+   -79.8409,
+   "izquierda"
+  ],
+  [
+   "Olmos",
+   -5.9856,
+   -79.7464,
+   "derecha"
+  ]
+ ],
+ "localidades_etiqueta_izquierda": [
+  "Bosque seco de Olmos"
+ ]
+}

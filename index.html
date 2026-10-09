@@ -2,226 +2,24 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Red JANO</title>
-<meta name="description" content="Red JANO — Jardines Agrostológicos como Nodos de Observación. PROCAP · INIA.">
+<meta name="description" content="Red JANO — Jardines Agrostológicos como Nodos de Observación. Proyecto Caprino PROCAP · INIA.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<style>
-/* Layout: barra superior fija + una vista por sección; el visor ocupa la pantalla con panel lateral, las memorias se leen como documento técnico de una columna. */
-:root{
-  --bg:#F1F4EE; --surface:#FBFCF9; --panel:#E6EBE1; --line:#CBD4C5;
-  --fg:#17231C; --muted:#56665B; --accent:#2D6A3E; --accent-soft:#D5E6D2; --on-accent:#F7FBF5;
-  --g-costa:#C08A2E; --g-bosque:#9A5434; --g-tropico:#23826A; --g-andes:#5468A6;
-  --t-ensayo:#9A5434; --t-demo:#2D6A3E; --qr-bg:#FFFFFF;
-  --water:#DCE4DE; --land:#F7F9F4;
-  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
-  --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
-  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
-  --step--1:.8125rem; --step-0:1rem; --step-1:1.1875rem; --step-2:1.5rem; --step-3:2.125rem; --step-4:3rem;
-  --radius:6px;
-}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#111814; --surface:#18211C; --panel:#1E2923; --line:#2F3D35;
-  --fg:#E2EADF; --muted:#9BAA9F; --accent:#7DBE8A; --accent-soft:#24402C; --on-accent:#0F1912;
-  --g-costa:#E0AE52; --g-bosque:#D28462; --g-tropico:#55BFA2; --g-andes:#8E9FD8;
-  --t-ensayo:#D28462; --t-demo:#7DBE8A; --water:#0C120F; --land:#1B241F; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#111814; --surface:#18211C; --panel:#1E2923; --line:#2F3D35;
-  --fg:#E2EADF; --muted:#9BAA9F; --accent:#7DBE8A; --accent-soft:#24402C; --on-accent:#0F1912;
-  --g-costa:#E0AE52; --g-bosque:#D28462; --g-tropico:#55BFA2; --g-andes:#8E9FD8;
-  --t-ensayo:#D28462; --t-demo:#7DBE8A; --water:#0C120F; --land:#1B241F; color-scheme:dark}
-
-*{box-sizing:border-box}
-[hidden]{display:none!important}
-body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:var(--step-0);line-height:1.6;margin:0}
-h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0;font-weight:700;font-stretch:88%}
-p{margin:0}
-a{color:var(--accent);text-underline-offset:3px}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.mono,code{font-family:var(--f-mono);font-size:.875em}
-.eyebrow{font-family:var(--f-display);font-size:var(--step--1);font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
-.wrap{max-width:1180px;margin-inline:auto;padding-inline:20px}
-.prose{max-width:66ch}
-.muted{color:var(--muted)}
-.num{font-variant-numeric:tabular-nums}
-
-/* barra superior */
-.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
-.topbar .wrap{display:flex;align-items:center;gap:24px;min-height:58px}
-.brand{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--fg);white-space:nowrap}
-.brand b{font-family:var(--f-display);font-size:1.25rem;font-weight:800;font-stretch:80%;letter-spacing:.01em}
-.brand span{font-family:var(--f-display);font-size:var(--step--1);color:var(--muted);font-weight:500}
-.nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;min-width:0}
-.nav::-webkit-scrollbar{display:none}
-.nav a{font-family:var(--f-display);font-weight:600;font-size:.9375rem;color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:var(--radius);white-space:nowrap}
-.nav a:hover{color:var(--fg);background:var(--panel)}
-.nav a[aria-current="page"]{color:var(--accent);background:var(--accent-soft)}
-.demo-note{background:var(--panel);border-bottom:1px solid var(--line);font-family:var(--f-display);font-size:var(--step--1);color:var(--muted)}
-.demo-note .wrap{padding-block:7px}
-.demo-note b{color:var(--fg)}
-
-main{padding-block:36px 64px}
-.view{display:grid;gap:40px}
-.pagehead{display:grid;gap:10px}
-.pagehead h1{font-size:var(--step-3)}
-.lead{font-size:var(--step-1);max-width:62ch}
-
-/* inicio */
-.hero{display:grid;gap:14px;padding-block:8px 4px}
-.hero h1{font-size:clamp(2.4rem,6vw,var(--step-4));font-stretch:78%;font-weight:800;letter-spacing:-.01em}
-.hero h1 small{display:block;font-size:.42em;font-weight:500;font-stretch:95%;color:var(--muted);letter-spacing:0;margin-top:8px}
-.figures{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-block:1px solid var(--line)}
-.figure{padding:18px 18px 16px 0;display:grid;gap:2px}
-.figure+.figure{padding-left:18px;border-left:1px solid var(--line)}
-.figure strong{font-family:var(--f-display);font-size:2.5rem;font-weight:700;font-stretch:80%;line-height:1;font-variant-numeric:tabular-nums}
-.figure span{font-family:var(--f-display);font-size:var(--step--1);color:var(--muted)}
-.figure em{font-style:normal;color:var(--accent);font-weight:600}
-.two{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px}
-.block{display:grid;gap:16px;align-content:start}
-.block h2{font-size:var(--step-2)}
-.bars{display:grid;gap:10px}
-.bar{display:grid;grid-template-columns:110px minmax(0,1fr) 34px;gap:12px;align-items:center;font-family:var(--f-display);font-size:.9375rem}
-.bar .track{height:12px;background:var(--panel);border-radius:2px;overflow:hidden}
-.bar .fill{height:100%;background:var(--accent)}
-.bar .n{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
-.grad-list{display:grid;gap:0;border-top:1px solid var(--line)}
-.grad-row{display:grid;grid-template-columns:14px minmax(0,1fr) auto;gap:12px;align-items:baseline;padding-block:12px;border-bottom:1px solid var(--line)}
-.sw{width:12px;height:12px;border-radius:50%;display:inline-block;transform:translateY(1px)}
-.grad-row h3{font-size:1.0625rem}
-.grad-row p{font-size:.9375rem;color:var(--muted)}
-.grad-row .n{font-family:var(--f-display);font-weight:700;font-size:1.25rem;font-variant-numeric:tabular-nums}
-.grad-row .n small{font-weight:500;font-size:.75rem;color:var(--muted);display:block;text-align:right}
-
-table{border-collapse:collapse;width:100%;font-family:var(--f-display);font-size:.9375rem}
-th{font-weight:600;text-align:left;color:var(--muted);font-size:var(--step--1);letter-spacing:.06em;text-transform:uppercase;padding:8px 12px 8px 0;border-bottom:1px solid var(--line)}
-td{padding:10px 12px 10px 0;border-bottom:1px solid var(--line);vertical-align:top}
-td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
-.table-scroll{overflow-x:auto}
-.pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-display);font-size:.75rem;font-weight:600;letter-spacing:.03em;padding:2px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
-.pill.ok{background:var(--accent-soft);color:var(--accent);border-color:transparent}
-.tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-display);font-size:.8125rem;color:var(--muted);white-space:nowrap}
-
-/* botones y chips */
-.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-display);font-weight:600;font-size:.9375rem;padding:9px 16px;border-radius:var(--radius);border:1px solid var(--accent);background:var(--accent);color:var(--on-accent);text-decoration:none;cursor:pointer}
-.btn.ghost{background:transparent;color:var(--accent)}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font-family:var(--f-display);font-size:.875rem;font-weight:600;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer;display:inline-flex;gap:7px;align-items:center}
-.chip[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
-.chip .sw{width:9px;height:9px}
-input[type="search"]{font:inherit;font-family:var(--f-display);font-size:.9375rem;padding:8px 12px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);color:var(--fg);width:min(100%,320px)}
-
-/* visor */
-.visor{display:grid;grid-template-columns:300px minmax(0,1fr);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface)}
-.visor aside{display:grid;gap:22px;align-content:start;padding:18px;border-right:1px solid var(--line);max-height:clamp(480px,calc(100dvh - 190px),860px);overflow-y:auto}
-.visor aside h3{font-size:var(--step--1);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
-#map{height:clamp(480px,calc(100dvh - 190px),860px);min-width:0}
-.check{display:flex;align-items:center;gap:9px;font-family:var(--f-display);font-size:.9375rem;padding-block:4px;cursor:pointer}
-.check input{accent-color:var(--accent);width:16px;height:16px}
-.check .count{margin-left:auto;color:var(--muted);font-variant-numeric:tabular-nums;font-size:.8125rem}
-.eea-btns{display:grid;gap:2px}
-.eea-btn{all:unset;box-sizing:border-box;display:flex;gap:9px;align-items:center;font-family:var(--f-display);font-size:.9375rem;padding:6px 8px;border-radius:var(--radius);cursor:pointer}
-.eea-btn:hover,.eea-btn:focus-visible{background:var(--panel)}
-.legend{display:grid;gap:6px;font-family:var(--f-display);font-size:.875rem}
-.legend span{display:flex;gap:8px;align-items:center}
-.legend i{width:16px;height:11px;border-radius:2px;display:inline-block;opacity:.75}
-.info{font-family:var(--f-display);font-size:.875rem;background:var(--panel);border-radius:var(--radius);padding:12px;display:grid;gap:4px}
-.info dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:3px 12px;margin:0}
-.info dt{color:var(--muted)}
-.info dd{margin:0}
-.note{font-family:var(--f-display);font-size:.8125rem;color:var(--muted)}
-.maplibregl-popup-content{background:var(--surface);color:var(--fg);font-family:var(--f-display);border-radius:var(--radius);padding:12px 14px;box-shadow:0 4px 18px rgba(0,0,0,.18);display:grid;gap:6px;min-width:200px}
-.maplibregl-popup-content h4{font-size:1.0625rem}
-.maplibregl-popup-tip{border-top-color:var(--surface)!important;border-bottom-color:var(--surface)!important}
-.maplibregl-popup-close-button{color:var(--muted);font-size:18px;padding:0 6px}
-.popup-actions{display:flex;gap:12px;flex-wrap:wrap;font-size:.875rem}
-
-/* jardines */
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
-.card{display:grid;gap:10px;align-content:start;padding:18px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);color:var(--fg);text-decoration:none}
-.card:hover{border-color:var(--accent)}
-.card h3{font-size:var(--step-1)}
-.card .meta{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
-.card p{font-size:.9375rem;color:var(--muted)}
-
-/* memoria técnica */
-.doc{display:grid;grid-template-columns:200px minmax(0,1fr);gap:48px}
-.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 80px);align-self:start;display:grid;gap:4px;font-family:var(--f-display);font-size:.875rem}
-.toc a{color:var(--muted);text-decoration:none;padding:3px 0}
-.toc a:hover{color:var(--accent)}
-.doc-body{display:grid;gap:40px;min-width:0}
-.doc-sec{display:grid;gap:14px}
-.doc-sec h2{font-size:var(--step-2);display:flex;gap:12px;align-items:baseline}
-.doc-sec h2 .secno{font-family:var(--f-mono);font-size:.875rem;font-weight:500;color:var(--muted)}
-.metarow{display:flex;flex-wrap:wrap;gap:10px 28px;font-family:var(--f-display);font-size:.9375rem}
-.metarow div{display:grid}
-.metarow dt{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
-.metarow dd{margin:0;font-weight:600}
-.pending{border:1px dashed var(--line);border-radius:var(--radius);padding:14px 16px;font-family:var(--f-display);font-size:.9375rem;color:var(--muted)}
-.breadcrumb{font-family:var(--f-display);font-size:.875rem}
-
-/* ensayos */
-.trial{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:28px;padding-block:24px;border-top:1px solid var(--line)}
-.trial:last-child{border-bottom:1px solid var(--line)}
-.trial h3{font-size:var(--step-2)}
-.trial .head{display:grid;gap:10px;align-content:start}
-.kv{display:grid;grid-template-columns:120px minmax(0,1fr);gap:8px 16px;margin:0;font-size:.9688rem}
-.kv dt{font-family:var(--f-display);font-size:.8125rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);padding-top:3px}
-.kv dd{margin:0}
-
-/* catálogo: etiquetas de herbario */
-.toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
-.labels{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
-.label{display:grid;gap:6px;align-content:start;padding:16px 16px 14px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);color:var(--fg);text-decoration:none}
-.label:hover{border-color:var(--accent)}
-.label .sci{font-style:italic;font-size:1.0625rem}
-.label h3{font-size:var(--step-1)}
-.label .foot{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-display);font-size:.8125rem;color:var(--muted);border-top:1px solid var(--line);padding-top:8px;margin-top:6px}
-.sheet{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:40px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);padding:28px}
-.sheet .sci{font-style:italic;font-size:var(--step-2)}
-.sheet h1{font-size:var(--step-3)}
-.qr{display:grid;gap:10px;justify-items:center;align-content:start;text-align:center}
-.qr .code{background:var(--qr-bg);padding:10px;border-radius:var(--radius);width:180px;max-width:100%}
-.qr .code svg{display:block;width:100%;height:auto}
-.url{font-family:var(--f-mono);font-size:.75rem;color:var(--muted);word-break:break-all;user-select:all}
-
-/* monitoreo */
-.chart{width:100%;height:auto;display:block;overflow:visible}
-.chart text{font-family:var(--f-display);font-size:11px;fill:var(--muted)}
-.chart .grid{stroke:var(--line);stroke-width:1}
-.formula{font-family:var(--f-mono);font-size:.9375rem;background:var(--panel);padding:12px 14px;border-radius:var(--radius);overflow-x:auto}
-pre{margin:0;background:var(--panel);border-radius:var(--radius);padding:16px;overflow-x:auto;font-size:.8125rem;line-height:1.55}
-.gee-slot{border:1px dashed var(--line);border-radius:var(--radius);padding:28px;display:grid;gap:8px;justify-items:start;background:var(--surface)}
-.gee-slot iframe{width:100%;height:640px;border:0;border-radius:var(--radius)}
-
-footer{border-top:1px solid var(--line);font-family:var(--f-display);font-size:.8125rem;color:var(--muted)}
-footer .wrap{padding-block:20px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
-.loading{font-family:var(--f-display);color:var(--muted)}
-
-@media (max-width:900px){
-  .two,.trial,.doc{grid-template-columns:minmax(0,1fr)}
-  .toc{position:static;display:flex;flex-wrap:wrap;gap:4px 14px}
-  .visor{grid-template-columns:minmax(0,1fr)}
-  .visor aside{order:2;border-right:0;border-top:1px solid var(--line);max-height:none}
-  #map{height:62vh}
-  .sheet{grid-template-columns:minmax(0,1fr)}
-}
-@media (max-width:640px){
-  .figures{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .figure:nth-child(3){padding-left:0;border-left:0}
-  .figure:nth-child(n+3){border-top:1px solid var(--line)}
-  .brand span{display:none}
-  .wrap{padding-inline:16px}
-  .kv{grid-template-columns:minmax(0,1fr)}
-  .bar{grid-template-columns:92px minmax(0,1fr) 30px}
-}
-@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
-</style>
-<style>.maplibregl-map{font:12px/20px Helvetica Neue,Arial,Helvetica,sans-serif;overflow:hidden;position:relative;-webkit-tap-highlight-color:rgb(0 0 0/0)}.maplibregl-canvas{left:0;position:absolute;top:0}.maplibregl-map:fullscreen{height:100%;width:100%}.maplibregl-ctrl-group button.maplibregl-ctrl-compass{touch-action:none}.maplibregl-canvas-container.maplibregl-interactive,.maplibregl-ctrl-group button.maplibregl-ctrl-compass{cursor:grab;-webkit-user-select:none;-moz-user-select:none;user-select:none}.maplibregl-canvas-container.maplibregl-interactive.maplibregl-track-pointer{cursor:pointer}.maplibregl-canvas-container.maplibregl-interactive:active,.maplibregl-ctrl-group button.maplibregl-ctrl-compass:active{cursor:grabbing}.maplibregl-canvas-container.maplibregl-touch-zoom-rotate,.maplibregl-canvas-container.maplibregl-touch-zoom-rotate .maplibregl-canvas{touch-action:pan-x pan-y}.maplibregl-canvas-container.maplibregl-touch-drag-pan,.maplibregl-canvas-container.maplibregl-touch-drag-pan .maplibregl-canvas{touch-action:pinch-zoom}.maplibregl-canvas-container.maplibregl-touch-zoom-rotate.maplibregl-touch-drag-pan,.maplibregl-canvas-container.maplibregl-touch-zoom-rotate.maplibregl-touch-drag-pan .maplibregl-canvas{touch-action:none}.maplibregl-canvas-container.maplibregl-touch-drag-pan.maplibregl-cooperative-gestures,.maplibregl-canvas-container.maplibregl-touch-drag-pan.maplibregl-cooperative-gestures .maplibregl-canvas{touch-action:pan-x pan-y}.maplibregl-ctrl-bottom-left,.maplibregl-ctrl-bottom-right,.maplibregl-ctrl-top-left,.maplibregl-ctrl-top-right{pointer-events:none;position:absolute;z-index:2}.maplibregl-ctrl-top-left{left:0;top:0}.maplibregl-ctrl-top-right{right:0;top:0}.maplibregl-ctrl-bottom-left{bottom:0;left:0}.maplibregl-ctrl-bottom-right{bottom:0;right:0}.maplibregl-ctrl{clear:both;pointer-events:auto;transform:translate(0)}.maplibregl-ctrl-top-left .maplibregl-ctrl{float:left;margin:10px 0 0 10px}.maplibregl-ctrl-top-right .maplibregl-ctrl{float:right;margin:10px 10px 0 0}.maplibregl-ctrl-bottom-left .maplibregl-ctrl{float:left;margin:0 0 10px 10px}.maplibregl-ctrl-bottom-right .maplibregl-ctrl{float:right;margin:0 10px 10px 0}.maplibregl-ctrl-group{background:#fff;border-radius:4px}.maplibregl-ctrl-group:not(:empty){box-shadow:0 0 0 2px rgba(0,0,0,.1)}@media (forced-colors:active){.maplibregl-ctrl-group:not(:empty){box-shadow:0 0 0 2px ButtonText}}.maplibregl-ctrl-group button{background-color:transparent;border:0;box-sizing:border-box;cursor:pointer;display:block;height:29px;outline:none;padding:0;width:29px}.maplibregl-ctrl-group button+button{border-top:1px solid #ddd}.maplibregl-ctrl button .maplibregl-ctrl-icon{background-position:50%;background-repeat:no-repeat;display:block;height:100%;width:100%}@media (forced-colors:active){.maplibregl-ctrl-icon{background-color:transparent}.maplibregl-ctrl-group button+button{border-top:1px solid ButtonText}}.maplibregl-ctrl button::-moz-focus-inner{border:0;padding:0}.maplibregl-ctrl-attrib-button:focus,.maplibregl-ctrl-group button:focus{box-shadow:0 0 2px 2px #0096ff}.maplibregl-ctrl button:disabled{cursor:not-allowed}.maplibregl-ctrl button:disabled .maplibregl-ctrl-icon{opacity:.25}.maplibregl-ctrl button:not(:disabled):hover{background-color:rgb(0 0 0/5%)}.maplibregl-ctrl-group button:focus:focus-visible{box-shadow:0 0 2px 2px #0096ff}.maplibregl-ctrl-group button:focus:not(:focus-visible){box-shadow:none}.maplibregl-ctrl-group button:focus:first-child{border-radius:4px 4px 0 0}.maplibregl-ctrl-group button:focus:last-child{border-radius:0 0 4px 4px}.maplibregl-ctrl-group button:focus:only-child{border-radius:inherit}.maplibregl-ctrl button.maplibregl-ctrl-zoom-out .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23333' viewBox='0 0 29 29'%3E%3Cpath d='M10 13c-.75 0-1.5.75-1.5 1.5S9.25 16 10 16h9c.75 0 1.5-.75 1.5-1.5S19.75 13 19 13z'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-zoom-in .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23333' viewBox='0 0 29 29'%3E%3Cpath d='M14.5 8.5c-.75 0-1.5.75-1.5 1.5v3h-3c-.75 0-1.5.75-1.5 1.5S9.25 16 10 16h3v3c0 .75.75 1.5 1.5 1.5S16 19.75 16 19v-3h3c.75 0 1.5-.75 1.5-1.5S19.75 13 19 13h-3v-3c0-.75-.75-1.5-1.5-1.5'/%3E%3C/svg%3E")}@media (forced-colors:active){.maplibregl-ctrl button.maplibregl-ctrl-zoom-out .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23fff' viewBox='0 0 29 29'%3E%3Cpath d='M10 13c-.75 0-1.5.75-1.5 1.5S9.25 16 10 16h9c.75 0 1.5-.75 1.5-1.5S19.75 13 19 13z'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-zoom-in .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23fff' viewBox='0 0 29 29'%3E%3Cpath d='M14.5 8.5c-.75 0-1.5.75-1.5 1.5v3h-3c-.75 0-1.5.75-1.5 1.5S9.25 16 10 16h3v3c0 .75.75 1.5 1.5 1.5S16 19.75 16 19v-3h3c.75 0 1.5-.75 1.5-1.5S19.75 13 19 13h-3v-3c0-.75-.75-1.5-1.5-1.5'/%3E%3C/svg%3E")}}@media (forced-colors:active) and (prefers-color-scheme:light){.maplibregl-ctrl button.maplibregl-ctrl-zoom-out .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' viewBox='0 0 29 29'%3E%3Cpath d='M10 13c-.75 0-1.5.75-1.5 1.5S9.25 16 10 16h9c.75 0 1.5-.75 1.5-1.5S19.75 13 19 13z'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-zoom-in .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' viewBox='0 0 29 29'%3E%3Cpath d='M14.5 8.5c-.75 0-1.5.75-1.5 1.5v3h-3c-.75 0-1.5.75-1.5 1.5S9.25 16 10 16h3v3c0 .75.75 1.5 1.5 1.5S16 19.75 16 19v-3h3c.75 0 1.5-.75 1.5-1.5S19.75 13 19 13h-3v-3c0-.75-.75-1.5-1.5-1.5'/%3E%3C/svg%3E")}}.maplibregl-ctrl button.maplibregl-ctrl-fullscreen .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23333' viewBox='0 0 29 29'%3E%3Cpath d='M24 16v5.5c0 1.75-.75 2.5-2.5 2.5H16v-1l3-1.5-4-5.5 1-1 5.5 4 1.5-3zM6 16l1.5 3 5.5-4 1 1-4 5.5 3 1.5v1H7.5C5.75 24 5 23.25 5 21.5V16zm7-11v1l-3 1.5 4 5.5-1 1-5.5-4L6 13H5V7.5C5 5.75 5.75 5 7.5 5zm11 2.5c0-1.75-.75-2.5-2.5-2.5H16v1l3 1.5-4 5.5 1 1 5.5-4 1.5 3h1z'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-shrink .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' viewBox='0 0 29 29'%3E%3Cpath d='M18.5 16c-1.75 0-2.5.75-2.5 2.5V24h1l1.5-3 5.5 4 1-1-4-5.5 3-1.5v-1zM13 18.5c0-1.75-.75-2.5-2.5-2.5H5v1l3 1.5L4 24l1 1 5.5-4 1.5 3h1zm3-8c0 1.75.75 2.5 2.5 2.5H24v-1l-3-1.5L25 5l-1-1-5.5 4L17 5h-1zM10.5 13c1.75 0 2.5-.75 2.5-2.5V5h-1l-1.5 3L5 4 4 5l4 5.5L5 12v1z'/%3E%3C/svg%3E")}@media (forced-colors:active){.maplibregl-ctrl button.maplibregl-ctrl-fullscreen .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23fff' viewBox='0 0 29 29'%3E%3Cpath d='M24 16v5.5c0 1.75-.75 2.5-2.5 2.5H16v-1l3-1.5-4-5.5 1-1 5.5 4 1.5-3zM6 16l1.5 3 5.5-4 1 1-4 5.5 3 1.5v1H7.5C5.75 24 5 23.25 5 21.5V16zm7-11v1l-3 1.5 4 5.5-1 1-5.5-4L6 13H5V7.5C5 5.75 5.75 5 7.5 5zm11 2.5c0-1.75-.75-2.5-2.5-2.5H16v1l3 1.5-4 5.5 1 1 5.5-4 1.5 3h1z'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-shrink .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23fff' viewBox='0 0 29 29'%3E%3Cpath d='M18.5 16c-1.75 0-2.5.75-2.5 2.5V24h1l1.5-3 5.5 4 1-1-4-5.5 3-1.5v-1zM13 18.5c0-1.75-.75-2.5-2.5-2.5H5v1l3 1.5L4 24l1 1 5.5-4 1.5 3h1zm3-8c0 1.75.75 2.5 2.5 2.5H24v-1l-3-1.5L25 5l-1-1-5.5 4L17 5h-1zM10.5 13c1.75 0 2.5-.75 2.5-2.5V5h-1l-1.5 3L5 4 4 5l4 5.5L5 12v1z'/%3E%3C/svg%3E")}}@media (forced-colors:active) and (prefers-color-scheme:light){.maplibregl-ctrl button.maplibregl-ctrl-fullscreen .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' viewBox='0 0 29 29'%3E%3Cpath d='M24 16v5.5c0 1.75-.75 2.5-2.5 2.5H16v-1l3-1.5-4-5.5 1-1 5.5 4 1.5-3zM6 16l1.5 3 5.5-4 1 1-4 5.5 3 1.5v1H7.5C5.75 24 5 23.25 5 21.5V16zm7-11v1l-3 1.5 4 5.5-1 1-5.5-4L6 13H5V7.5C5 5.75 5.75 5 7.5 5zm11 2.5c0-1.75-.75-2.5-2.5-2.5H16v1l3 1.5-4 5.5 1 1 5.5-4 1.5 3h1z'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-shrink .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' viewBox='0 0 29 29'%3E%3Cpath d='M18.5 16c-1.75 0-2.5.75-2.5 2.5V24h1l1.5-3 5.5 4 1-1-4-5.5 3-1.5v-1zM13 18.5c0-1.75-.75-2.5-2.5-2.5H5v1l3 1.5L4 24l1 1 5.5-4 1.5 3h1zm3-8c0 1.75.75 2.5 2.5 2.5H24v-1l-3-1.5L25 5l-1-1-5.5 4L17 5h-1zM10.5 13c1.75 0 2.5-.75 2.5-2.5V5h-1l-1.5 3L5 4 4 5l4 5.5L5 12v1z'/%3E%3C/svg%3E")}}.maplibregl-ctrl button.maplibregl-ctrl-compass .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23333' viewBox='0 0 29 29'%3E%3Cpath d='m10.5 14 4-8 4 8z'/%3E%3Cpath fill='%23ccc' d='m10.5 16 4 8 4-8z'/%3E%3C/svg%3E")}@media (forced-colors:active){.maplibregl-ctrl button.maplibregl-ctrl-compass .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23fff' viewBox='0 0 29 29'%3E%3Cpath d='m10.5 14 4-8 4 8z'/%3E%3Cpath fill='%23ccc' d='m10.5 16 4 8 4-8z'/%3E%3C/svg%3E")}}@media (forced-colors:active) and (prefers-color-scheme:light){.maplibregl-ctrl button.maplibregl-ctrl-compass .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' viewBox='0 0 29 29'%3E%3Cpath d='m10.5 14 4-8 4 8z'/%3E%3Cpath fill='%23ccc' d='m10.5 16 4 8 4-8z'/%3E%3C/svg%3E")}}.maplibregl-ctrl button.maplibregl-ctrl-terrain .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='%23333' viewBox='0 0 22 22'%3E%3Cpath d='m1.754 13.406 4.453-4.851 3.09 3.09 3.281 3.277.969-.969-3.309-3.312 3.844-4.121 6.148 6.886h1.082v-.855l-7.207-8.07-4.84 5.187L6.169 6.57l-5.48 5.965v.871ZM.688 16.844h20.625v1.375H.688Zm0 0'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-terrain-enabled .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='%2333b5e5' viewBox='0 0 22 22'%3E%3Cpath d='m1.754 13.406 4.453-4.851 3.09 3.09 3.281 3.277.969-.969-3.309-3.312 3.844-4.121 6.148 6.886h1.082v-.855l-7.207-8.07-4.84 5.187L6.169 6.57l-5.48 5.965v.871ZM.688 16.844h20.625v1.375H.688Zm0 0'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23333' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate:disabled .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23aaa' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3Cpath fill='red' d='m14 5 1 1-9 9-1-1z'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-active .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%2333b5e5' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-active-error .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23e58978' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-background .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%2333b5e5' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-background-error .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23e54e33' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-waiting .maplibregl-ctrl-icon{animation:maplibregl-spin 2s linear infinite}@media (forced-colors:active){.maplibregl-ctrl button.maplibregl-ctrl-geolocate .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23fff' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate:disabled .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23999' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3Cpath fill='red' d='m14 5 1 1-9 9-1-1z'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-active .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%2333b5e5' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-active-error .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23e58978' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-background .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%2333b5e5' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-background-error .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23e54e33' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3C/svg%3E")}}@media (forced-colors:active) and (prefers-color-scheme:light){.maplibregl-ctrl button.maplibregl-ctrl-geolocate .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate:disabled .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23666' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3Cpath fill='red' d='m14 5 1 1-9 9-1-1z'/%3E%3C/svg%3E")}}@keyframes maplibregl-spin{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}a.maplibregl-ctrl-logo{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='23' fill='none'%3E%3Cpath fill='%23000' fill-opacity='.4' fill-rule='evenodd' d='M17.408 16.796h-1.827l2.501-12.095h.198l3.324 6.533.988 2.19.988-2.19 3.258-6.533h.181l2.6 12.095h-1.81l-1.218-5.644-.362-1.71-.658 1.71-2.929 5.644h-.098l-2.914-5.644-.757-1.71-.345 1.71zm1.958-3.42-.726 3.663a1.255 1.255 0 0 1-1.232 1.011h-1.827a1.255 1.255 0 0 1-1.229-1.509l2.501-12.095a1.255 1.255 0 0 1 1.23-1.001h.197a1.25 1.25 0 0 1 1.12.685l3.19 6.273 3.125-6.263a1.25 1.25 0 0 1 1.123-.695h.181a1.255 1.255 0 0 1 1.227.991l1.443 6.71a5 5 0 0 1 .314-.787l.009-.016a4.6 4.6 0 0 1 1.777-1.887c.782-.46 1.668-.667 2.611-.667a4.6 4.6 0 0 1 1.7.32l.306.134c.21-.16.474-.256.759-.256h1.694a1.255 1.255 0 0 1 1.212.925 1.255 1.255 0 0 1 1.212-.925h1.711c.284 0 .545.094.755.252.613-.3 1.312-.45 2.075-.45 1.356 0 2.557.445 3.482 1.4q.47.48.763 1.064V4.701a1.255 1.255 0 0 1 1.255-1.255h1.86A1.255 1.255 0 0 1 54.44 4.7v9.194h2.217c.19 0 .37.043.532.118v-4.77c0-.356.147-.678.385-.906a2.42 2.42 0 0 1-.682-1.71c0-.665.267-1.253.735-1.7a2.45 2.45 0 0 1 1.722-.674 2.43 2.43 0 0 1 1.705.675q.318.302.504.683V4.7a1.255 1.255 0 0 1 1.255-1.255h1.744A1.255 1.255 0 0 1 65.812 4.7v3.335a4.8 4.8 0 0 1 1.526-.246c.938 0 1.817.214 2.59.69a4.47 4.47 0 0 1 1.67 1.743v-.98a1.255 1.255 0 0 1 1.256-1.256h1.777c.233 0 .451.064.639.174a3.4 3.4 0 0 1 1.567-.372c.346 0 .861.02 1.285.232a1.25 1.25 0 0 1 .689 1.004 4.7 4.7 0 0 1 .853-.588c.795-.44 1.675-.647 2.61-.647 1.385 0 2.65.39 3.525 1.396.836.938 1.168 2.173 1.168 3.528q-.001.515-.056 1.051a1.255 1.255 0 0 1-.947 1.09l.408.952a1.255 1.255 0 0 1-.477 1.552c-.418.268-.92.463-1.458.612-.613.171-1.304.244-2.049.244-1.06 0-2.043-.207-2.886-.698l-.015-.008c-.798-.48-1.419-1.135-1.818-1.963l-.004-.008a5.8 5.8 0 0 1-.548-2.512q0-.429.053-.843a1.3 1.3 0 0 1-.333-.086l-.166-.004c-.223 0-.426.062-.643.228-.03.024-.142.139-.142.59v3.883a1.255 1.255 0 0 1-1.256 1.256h-1.777a1.255 1.255 0 0 1-1.256-1.256V15.69l-.032.057a4.8 4.8 0 0 1-1.86 1.833 5.04 5.04 0 0 1-2.484.634 4.5 4.5 0 0 1-1.935-.424 1.25 1.25 0 0 1-.764.258h-1.71a1.255 1.255 0 0 1-1.256-1.255V7.687a2.4 2.4 0 0 1-.428.625c.253.23.412.561.412.93v7.553a1.255 1.255 0 0 1-1.256 1.255h-1.843a1.25 1.25 0 0 1-.894-.373c-.228.23-.544.373-.894.373H51.32a1.255 1.255 0 0 1-1.256-1.255v-1.251l-.061.117a4.7 4.7 0 0 1-1.782 1.884 4.77 4.77 0 0 1-2.485.67 5.6 5.6 0 0 1-1.485-.188l.009 2.764a1.255 1.255 0 0 1-1.255 1.259h-1.729a1.255 1.255 0 0 1-1.255-1.255v-3.537a1.255 1.255 0 0 1-1.167.793h-1.679a1.25 1.25 0 0 1-.77-.263 4.5 4.5 0 0 1-1.945.429c-.885 0-1.724-.21-2.495-.632l-.017-.01a5 5 0 0 1-1.081-.836 1.255 1.255 0 0 1-1.254 1.312h-1.81a1.255 1.255 0 0 1-1.228-.99l-.782-3.625-2.044 3.939a1.25 1.25 0 0 1-1.115.676h-.098a1.25 1.25 0 0 1-1.116-.68l-2.061-3.994zM35.92 16.63l.207-.114.223-.15q.493-.356.735-.785l.061-.118.033 1.332h1.678V9.242h-1.694l-.033 1.267q-.133-.329-.526-.658l-.032-.028a3.2 3.2 0 0 0-.668-.428l-.27-.12a3.3 3.3 0 0 0-1.235-.23q-1.136-.001-1.974.493a3.36 3.36 0 0 0-1.3 1.382q-.445.89-.444 2.074 0 1.2.51 2.107a3.8 3.8 0 0 0 1.382 1.381 3.9 3.9 0 0 0 1.893.477q.795 0 1.455-.33zm-2.789-5.38q-.576.675-.575 1.762 0 1.102.559 1.794.576.675 1.645.675a2.25 2.25 0 0 0 .934-.19 2.2 2.2 0 0 0 .468-.29l.178-.161a2.2 2.2 0 0 0 .397-.561q.244-.5.244-1.15v-.115q0-.708-.296-1.267l-.043-.077a2.2 2.2 0 0 0-.633-.709l-.13-.086-.047-.028a2.1 2.1 0 0 0-1.073-.285q-1.052 0-1.629.692zm2.316 2.706c.163-.17.28-.407.28-.83v-.114c0-.292-.06-.508-.15-.68a.96.96 0 0 0-.353-.389.85.85 0 0 0-.464-.127c-.4 0-.56.114-.664.239l-.01.012c-.148.174-.275.45-.275.945 0 .506.122.801.27.99.097.11.266.224.68.224.303 0 .504-.09.687-.269zm7.545 1.705a2.6 2.6 0 0 0 .331.423q.319.33.755.548l.173.074q.65.255 1.49.255 1.02 0 1.844-.493a3.45 3.45 0 0 0 1.316-1.4q.493-.904.493-2.089 0-1.909-.988-2.913-.988-1.02-2.584-1.02-.898 0-1.575.347a3 3 0 0 0-.415.262l-.199.166a3.4 3.4 0 0 0-.64.82V9.242h-1.712v11.553h1.729l-.017-5.134zm.53-1.138q.206.29.48.5l.155.11.053.034q.51.296 1.119.297 1.07 0 1.645-.675.577-.69.576-1.762 0-1.119-.576-1.777-.558-.675-1.645-.675-.435 0-.835.16a2 2 0 0 0-.284.136 2 2 0 0 0-.363.254 2.2 2.2 0 0 0-.46.569l-.082.162a2.6 2.6 0 0 0-.213 1.072v.115q0 .707.296 1.267l.135.211zm.964-.818a1.1 1.1 0 0 0 .367.385.94.94 0 0 0 .476.118c.423 0 .59-.117.687-.23.159-.194.28-.478.28-.95 0-.53-.133-.8-.266-.952l-.021-.025c-.078-.094-.231-.221-.68-.221a1 1 0 0 0-.503.135l-.012.007a.86.86 0 0 0-.335.343c-.073.133-.132.324-.132.614v.115a1.4 1.4 0 0 0 .14.66zm15.7-6.222q.347-.346.346-.856a1.05 1.05 0 0 0-.345-.79 1.18 1.18 0 0 0-.84-.329q-.51 0-.855.33a1.05 1.05 0 0 0-.346.79q0 .51.346.855.345.346.856.346.51 0 .839-.346zm4.337 9.314.033-1.332q.191.403.59.747l.098.081a4 4 0 0 0 .316.224l.223.122a3.2 3.2 0 0 0 1.44.322 3.8 3.8 0 0 0 1.875-.477 3.5 3.5 0 0 0 1.382-1.366q.527-.89.526-2.09 0-1.184-.444-2.073a3.24 3.24 0 0 0-1.283-1.399q-.823-.51-1.942-.51a3.5 3.5 0 0 0-1.527.344l-.086.043-.165.09a3 3 0 0 0-.33.214q-.432.315-.656.707a2 2 0 0 0-.099.198l.082-1.283V4.701h-1.744v12.095zm.473-2.509a2.5 2.5 0 0 0 .566.7q.117.098.245.18l.144.08a2.1 2.1 0 0 0 .975.232q1.07 0 1.645-.675.576-.69.576-1.778 0-1.102-.576-1.777-.56-.691-1.645-.692a2.2 2.2 0 0 0-1.015.235q-.22.113-.415.282l-.15.142a2.1 2.1 0 0 0-.42.594q-.223.479-.223 1.1v.115q0 .705.293 1.26zm2.616-.293c.157-.191.28-.479.28-.967 0-.51-.13-.79-.276-.961l-.021-.026c-.082-.1-.232-.225-.67-.225a.87.87 0 0 0-.681.279l-.012.011c-.154.155-.274.38-.274.807v.115c0 .285.057.499.144.669a1.1 1.1 0 0 0 .367.405c.137.082.28.123.455.123.423 0 .59-.118.686-.23zm8.266-3.013q.345-.13.724-.14l.069-.002q.493 0 .642.099l.247-1.794q-.196-.099-.717-.099a2.3 2.3 0 0 0-.545.063 2 2 0 0 0-.411.148 2.2 2.2 0 0 0-.4.249 2.5 2.5 0 0 0-.485.499 2.7 2.7 0 0 0-.32.581l-.05.137v-1.48h-1.778v7.553h1.777v-3.884q0-.546.159-.943a1.5 1.5 0 0 1 .466-.636 2.5 2.5 0 0 1 .399-.253 2 2 0 0 1 .224-.099zm9.784 2.656.05-.922q0-1.743-.856-2.698-.838-.97-2.584-.97-1.119-.001-2.007.493a3.46 3.46 0 0 0-1.4 1.382q-.493.906-.493 2.106 0 1.07.428 1.975.428.89 1.332 1.432.906.526 2.255.526.973 0 1.668-.185l.044-.012.135-.04q.613-.184.984-.421l-.542-1.267q-.3.162-.642.274l-.297.087q-.51.131-1.3.131-.954 0-1.497-.444a1.6 1.6 0 0 1-.192-.193q-.366-.44-.512-1.234l-.004-.021zm-5.427-1.256-.003.022h3.752v-.138q-.011-.727-.288-1.118a1 1 0 0 0-.156-.176q-.46-.428-1.316-.428-.986 0-1.494.604-.379.45-.494 1.234zm-27.053 2.77V4.7h-1.86v12.095h5.333V15.15zm7.103-5.908v7.553h-1.843V9.242h1.843z'/%3E%3Cpath fill='%23fff' d='m19.63 11.151-.757-1.71-.345 1.71-1.12 5.644h-1.827L18.083 4.7h.197l3.325 6.533.988 2.19.988-2.19L26.839 4.7h.181l2.6 12.095h-1.81l-1.218-5.644-.362-1.71-.658 1.71-2.93 5.644h-.098l-2.913-5.644zm14.836 5.81q-1.02 0-1.893-.478a3.8 3.8 0 0 1-1.381-1.382q-.51-.906-.51-2.106 0-1.185.444-2.074a3.36 3.36 0 0 1 1.3-1.382q.839-.494 1.974-.494a3.3 3.3 0 0 1 1.234.231 3.3 3.3 0 0 1 .97.575q.396.33.527.659l.033-1.267h1.694v7.553H37.18l-.033-1.332q-.279.593-1.02 1.053a3.17 3.17 0 0 1-1.662.444zm.296-1.482q.938 0 1.58-.642.642-.66.642-1.711v-.115q0-.708-.296-1.267a2.2 2.2 0 0 0-.807-.872 2.1 2.1 0 0 0-1.119-.313q-1.053 0-1.629.692-.575.675-.575 1.76 0 1.103.559 1.795.577.675 1.645.675zm6.521-6.237h1.711v1.4q.906-1.597 2.83-1.597 1.596 0 2.584 1.02.988 1.005.988 2.914 0 1.185-.493 2.09a3.46 3.46 0 0 1-1.316 1.399 3.5 3.5 0 0 1-1.844.493q-.954 0-1.662-.329a2.67 2.67 0 0 1-1.086-.97l.017 5.134h-1.728zm4.048 6.22q1.07 0 1.645-.674.577-.69.576-1.762 0-1.119-.576-1.777-.558-.675-1.645-.675-.592 0-1.12.296-.51.28-.822.823-.296.527-.296 1.234v.115q0 .708.296 1.267.313.543.823.855.51.296 1.119.297z'/%3E%3Cpath fill='%23e1e3e9' d='M51.325 4.7h1.86v10.45h3.473v1.646h-5.333zm7.12 4.542h1.843v7.553h-1.843zm.905-1.415a1.16 1.16 0 0 1-.856-.346 1.17 1.17 0 0 1-.346-.856 1.05 1.05 0 0 1 .346-.79q.346-.329.856-.329.494 0 .839.33a1.05 1.05 0 0 1 .345.79 1.16 1.16 0 0 1-.345.855q-.33.346-.84.346zm7.875 9.133a3.17 3.17 0 0 1-1.662-.444q-.723-.46-1.004-1.053l-.033 1.332h-1.71V4.701h1.743v4.657l-.082 1.283q.279-.658 1.086-1.119a3.5 3.5 0 0 1 1.778-.477q1.119 0 1.942.51a3.24 3.24 0 0 1 1.283 1.4q.445.888.444 2.072 0 1.201-.526 2.09a3.5 3.5 0 0 1-1.382 1.366 3.8 3.8 0 0 1-1.876.477zm-.296-1.481q1.069 0 1.645-.675.577-.69.577-1.778 0-1.102-.577-1.776-.56-.691-1.645-.692a2.12 2.12 0 0 0-1.58.659q-.642.641-.642 1.694v.115q0 .71.296 1.267a2.4 2.4 0 0 0 .807.872 2.1 2.1 0 0 0 1.119.313zm5.927-6.237h1.777v1.481q.263-.757.856-1.217a2.14 2.14 0 0 1 1.349-.46q.527 0 .724.098l-.247 1.794q-.149-.099-.642-.099-.774 0-1.416.494-.626.493-.626 1.58v3.883h-1.777V9.242zm9.534 7.718q-1.35 0-2.255-.526-.904-.543-1.332-1.432a4.6 4.6 0 0 1-.428-1.975q0-1.2.493-2.106a3.46 3.46 0 0 1 1.4-1.382q.889-.495 2.007-.494 1.744 0 2.584.97.855.956.856 2.7 0 .444-.05.92h-5.43q.18 1.005.708 1.45.542.443 1.497.443.79 0 1.3-.131a4 4 0 0 0 .938-.362l.542 1.267q-.411.263-1.119.46-.708.198-1.711.197zm1.596-4.558q.016-1.02-.444-1.432-.46-.428-1.316-.428-1.728 0-1.991 1.86z'/%3E%3Cpath d='M5.074 15.948a.484.657 0 0 0-.486.659v1.84a.484.657 0 0 0 .486.659h4.101a.484.657 0 0 0 .486-.659v-1.84a.484.657 0 0 0-.486-.659zm3.56 1.16H5.617v.838h3.017z' style='fill:%23fff;fill-rule:evenodd;stroke-width:1.03600001'/%3E%3Cg style='stroke-width:1.12603545'%3E%3Cpath d='M-9.408-1.416c-3.833-.025-7.056 2.912-7.08 6.615-.02 3.08 1.653 4.832 3.107 6.268.903.892 1.721 1.74 2.32 2.902l-.525-.004c-.543-.003-.992.304-1.24.639a1.87 1.87 0 0 0-.362 1.121l-.011 1.877c-.003.402.104.787.347 1.125.244.338.688.653 1.23.656l4.142.028c.542.003.99-.306 1.238-.641a1.87 1.87 0 0 0 .363-1.121l.012-1.875a1.87 1.87 0 0 0-.348-1.127c-.243-.338-.688-.653-1.23-.656l-.518-.004c.597-1.145 1.425-1.983 2.348-2.87 1.473-1.414 3.18-3.149 3.2-6.226-.016-3.59-2.923-6.684-6.993-6.707m-.006 1.1v.002c3.274.02 5.92 2.532 5.9 5.6-.017 2.706-1.39 4.026-2.863 5.44-1.034.994-2.118 2.033-2.814 3.633-.018.041-.052.055-.075.065q-.013.004-.02.01a.34.34 0 0 1-.226.084.34.34 0 0 1-.224-.086l-.092-.077c-.699-1.615-1.768-2.669-2.781-3.67-1.454-1.435-2.797-2.762-2.78-5.478.02-3.067 2.7-5.545 5.975-5.523m-.02 2.826c-1.62-.01-2.944 1.315-2.955 2.96-.01 1.646 1.295 2.988 2.916 2.999h.002c1.621.01 2.943-1.316 2.953-2.961.011-1.646-1.294-2.988-2.916-2.998m-.005 1.1c1.017.006 1.829.83 1.822 1.89s-.83 1.874-1.848 1.867c-1.018-.006-1.829-.83-1.822-1.89s.83-1.874 1.848-1.868m-2.155 11.857 4.14.025c.271.002.49.305.487.676l-.013 1.875c-.003.37-.224.67-.495.668l-4.14-.025c-.27-.002-.487-.306-.485-.676l.012-1.875c.003-.37.224-.67.494-.668' style='color:%23000;font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:%23000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:evenodd;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:%23000;solid-opacity:1;vector-effect:none;fill:%23000;fill-opacity:.4;fill-rule:evenodd;stroke:none;stroke-width:2.47727823;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto' transform='translate(15.553 2.85)scale(.88807)'/%3E%3Cpath d='M-9.415-.316C-12.69-.338-15.37 2.14-15.39 5.207c-.017 2.716 1.326 4.041 2.78 5.477 1.013 1 2.081 2.055 2.78 3.67l.092.076a.34.34 0 0 0 .225.086.34.34 0 0 0 .227-.083l.019-.01c.022-.009.057-.024.074-.064.697-1.6 1.78-2.64 2.814-3.634 1.473-1.414 2.847-2.733 2.864-5.44.02-3.067-2.627-5.58-5.901-5.601m-.057 8.784c1.621.011 2.944-1.315 2.955-2.96.01-1.646-1.295-2.988-2.916-2.999-1.622-.01-2.945 1.315-2.955 2.96s1.295 2.989 2.916 3' style='clip-rule:evenodd;fill:%23e1e3e9;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.47727823;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:.4' transform='translate(15.553 2.85)scale(.88807)'/%3E%3Cpath d='M-11.594 15.465c-.27-.002-.492.297-.494.668l-.012 1.876c-.003.371.214.673.485.675l4.14.027c.271.002.492-.298.495-.668l.012-1.877c.003-.37-.215-.672-.485-.674z' style='clip-rule:evenodd;fill:%23fff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.47727823;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:.4' transform='translate(15.553 2.85)scale(.88807)'/%3E%3C/g%3E%3C/svg%3E");background-repeat:no-repeat;cursor:pointer;display:block;height:23px;margin:0 0 -4px -4px;overflow:hidden;width:88px}a.maplibregl-ctrl-logo.maplibregl-compact{width:14px}@media (forced-colors:active){a.maplibregl-ctrl-logo{background-color:transparent;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='23' fill='none'%3E%3Cpath fill='%23000' fill-opacity='.4' fill-rule='evenodd' d='M17.408 16.796h-1.827l2.501-12.095h.198l3.324 6.533.988 2.19.988-2.19 3.258-6.533h.181l2.6 12.095h-1.81l-1.218-5.644-.362-1.71-.658 1.71-2.929 5.644h-.098l-2.914-5.644-.757-1.71-.345 1.71zm1.958-3.42-.726 3.663a1.255 1.255 0 0 1-1.232 1.011h-1.827a1.255 1.255 0 0 1-1.229-1.509l2.501-12.095a1.255 1.255 0 0 1 1.23-1.001h.197a1.25 1.25 0 0 1 1.12.685l3.19 6.273 3.125-6.263a1.25 1.25 0 0 1 1.123-.695h.181a1.255 1.255 0 0 1 1.227.991l1.443 6.71a5 5 0 0 1 .314-.787l.009-.016a4.6 4.6 0 0 1 1.777-1.887c.782-.46 1.668-.667 2.611-.667a4.6 4.6 0 0 1 1.7.32l.306.134c.21-.16.474-.256.759-.256h1.694a1.255 1.255 0 0 1 1.212.925 1.255 1.255 0 0 1 1.212-.925h1.711c.284 0 .545.094.755.252.613-.3 1.312-.45 2.075-.45 1.356 0 2.557.445 3.482 1.4q.47.48.763 1.064V4.701a1.255 1.255 0 0 1 1.255-1.255h1.86A1.255 1.255 0 0 1 54.44 4.7v9.194h2.217c.19 0 .37.043.532.118v-4.77c0-.356.147-.678.385-.906a2.42 2.42 0 0 1-.682-1.71c0-.665.267-1.253.735-1.7a2.45 2.45 0 0 1 1.722-.674 2.43 2.43 0 0 1 1.705.675q.318.302.504.683V4.7a1.255 1.255 0 0 1 1.255-1.255h1.744A1.255 1.255 0 0 1 65.812 4.7v3.335a4.8 4.8 0 0 1 1.526-.246c.938 0 1.817.214 2.59.69a4.47 4.47 0 0 1 1.67 1.743v-.98a1.255 1.255 0 0 1 1.256-1.256h1.777c.233 0 .451.064.639.174a3.4 3.4 0 0 1 1.567-.372c.346 0 .861.02 1.285.232a1.25 1.25 0 0 1 .689 1.004 4.7 4.7 0 0 1 .853-.588c.795-.44 1.675-.647 2.61-.647 1.385 0 2.65.39 3.525 1.396.836.938 1.168 2.173 1.168 3.528q-.001.515-.056 1.051a1.255 1.255 0 0 1-.947 1.09l.408.952a1.255 1.255 0 0 1-.477 1.552c-.418.268-.92.463-1.458.612-.613.171-1.304.244-2.049.244-1.06 0-2.043-.207-2.886-.698l-.015-.008c-.798-.48-1.419-1.135-1.818-1.963l-.004-.008a5.8 5.8 0 0 1-.548-2.512q0-.429.053-.843a1.3 1.3 0 0 1-.333-.086l-.166-.004c-.223 0-.426.062-.643.228-.03.024-.142.139-.142.59v3.883a1.255 1.255 0 0 1-1.256 1.256h-1.777a1.255 1.255 0 0 1-1.256-1.256V15.69l-.032.057a4.8 4.8 0 0 1-1.86 1.833 5.04 5.04 0 0 1-2.484.634 4.5 4.5 0 0 1-1.935-.424 1.25 1.25 0 0 1-.764.258h-1.71a1.255 1.255 0 0 1-1.256-1.255V7.687a2.4 2.4 0 0 1-.428.625c.253.23.412.561.412.93v7.553a1.255 1.255 0 0 1-1.256 1.255h-1.843a1.25 1.25 0 0 1-.894-.373c-.228.23-.544.373-.894.373H51.32a1.255 1.255 0 0 1-1.256-1.255v-1.251l-.061.117a4.7 4.7 0 0 1-1.782 1.884 4.77 4.77 0 0 1-2.485.67 5.6 5.6 0 0 1-1.485-.188l.009 2.764a1.255 1.255 0 0 1-1.255 1.259h-1.729a1.255 1.255 0 0 1-1.255-1.255v-3.537a1.255 1.255 0 0 1-1.167.793h-1.679a1.25 1.25 0 0 1-.77-.263 4.5 4.5 0 0 1-1.945.429c-.885 0-1.724-.21-2.495-.632l-.017-.01a5 5 0 0 1-1.081-.836 1.255 1.255 0 0 1-1.254 1.312h-1.81a1.255 1.255 0 0 1-1.228-.99l-.782-3.625-2.044 3.939a1.25 1.25 0 0 1-1.115.676h-.098a1.25 1.25 0 0 1-1.116-.68l-2.061-3.994zM35.92 16.63l.207-.114.223-.15q.493-.356.735-.785l.061-.118.033 1.332h1.678V9.242h-1.694l-.033 1.267q-.133-.329-.526-.658l-.032-.028a3.2 3.2 0 0 0-.668-.428l-.27-.12a3.3 3.3 0 0 0-1.235-.23q-1.136-.001-1.974.493a3.36 3.36 0 0 0-1.3 1.382q-.445.89-.444 2.074 0 1.2.51 2.107a3.8 3.8 0 0 0 1.382 1.381 3.9 3.9 0 0 0 1.893.477q.795 0 1.455-.33zm-2.789-5.38q-.576.675-.575 1.762 0 1.102.559 1.794.576.675 1.645.675a2.25 2.25 0 0 0 .934-.19 2.2 2.2 0 0 0 .468-.29l.178-.161a2.2 2.2 0 0 0 .397-.561q.244-.5.244-1.15v-.115q0-.708-.296-1.267l-.043-.077a2.2 2.2 0 0 0-.633-.709l-.13-.086-.047-.028a2.1 2.1 0 0 0-1.073-.285q-1.052 0-1.629.692zm2.316 2.706c.163-.17.28-.407.28-.83v-.114c0-.292-.06-.508-.15-.68a.96.96 0 0 0-.353-.389.85.85 0 0 0-.464-.127c-.4 0-.56.114-.664.239l-.01.012c-.148.174-.275.45-.275.945 0 .506.122.801.27.99.097.11.266.224.68.224.303 0 .504-.09.687-.269zm7.545 1.705a2.6 2.6 0 0 0 .331.423q.319.33.755.548l.173.074q.65.255 1.49.255 1.02 0 1.844-.493a3.45 3.45 0 0 0 1.316-1.4q.493-.904.493-2.089 0-1.909-.988-2.913-.988-1.02-2.584-1.02-.898 0-1.575.347a3 3 0 0 0-.415.262l-.199.166a3.4 3.4 0 0 0-.64.82V9.242h-1.712v11.553h1.729l-.017-5.134zm.53-1.138q.206.29.48.5l.155.11.053.034q.51.296 1.119.297 1.07 0 1.645-.675.577-.69.576-1.762 0-1.119-.576-1.777-.558-.675-1.645-.675-.435 0-.835.16a2 2 0 0 0-.284.136 2 2 0 0 0-.363.254 2.2 2.2 0 0 0-.46.569l-.082.162a2.6 2.6 0 0 0-.213 1.072v.115q0 .707.296 1.267l.135.211zm.964-.818a1.1 1.1 0 0 0 .367.385.94.94 0 0 0 .476.118c.423 0 .59-.117.687-.23.159-.194.28-.478.28-.95 0-.53-.133-.8-.266-.952l-.021-.025c-.078-.094-.231-.221-.68-.221a1 1 0 0 0-.503.135l-.012.007a.86.86 0 0 0-.335.343c-.073.133-.132.324-.132.614v.115a1.4 1.4 0 0 0 .14.66zm15.7-6.222q.347-.346.346-.856a1.05 1.05 0 0 0-.345-.79 1.18 1.18 0 0 0-.84-.329q-.51 0-.855.33a1.05 1.05 0 0 0-.346.79q0 .51.346.855.345.346.856.346.51 0 .839-.346zm4.337 9.314.033-1.332q.191.403.59.747l.098.081a4 4 0 0 0 .316.224l.223.122a3.2 3.2 0 0 0 1.44.322 3.8 3.8 0 0 0 1.875-.477 3.5 3.5 0 0 0 1.382-1.366q.527-.89.526-2.09 0-1.184-.444-2.073a3.24 3.24 0 0 0-1.283-1.399q-.823-.51-1.942-.51a3.5 3.5 0 0 0-1.527.344l-.086.043-.165.09a3 3 0 0 0-.33.214q-.432.315-.656.707a2 2 0 0 0-.099.198l.082-1.283V4.701h-1.744v12.095zm.473-2.509a2.5 2.5 0 0 0 .566.7q.117.098.245.18l.144.08a2.1 2.1 0 0 0 .975.232q1.07 0 1.645-.675.576-.69.576-1.778 0-1.102-.576-1.777-.56-.691-1.645-.692a2.2 2.2 0 0 0-1.015.235q-.22.113-.415.282l-.15.142a2.1 2.1 0 0 0-.42.594q-.223.479-.223 1.1v.115q0 .705.293 1.26zm2.616-.293c.157-.191.28-.479.28-.967 0-.51-.13-.79-.276-.961l-.021-.026c-.082-.1-.232-.225-.67-.225a.87.87 0 0 0-.681.279l-.012.011c-.154.155-.274.38-.274.807v.115c0 .285.057.499.144.669a1.1 1.1 0 0 0 .367.405c.137.082.28.123.455.123.423 0 .59-.118.686-.23zm8.266-3.013q.345-.13.724-.14l.069-.002q.493 0 .642.099l.247-1.794q-.196-.099-.717-.099a2.3 2.3 0 0 0-.545.063 2 2 0 0 0-.411.148 2.2 2.2 0 0 0-.4.249 2.5 2.5 0 0 0-.485.499 2.7 2.7 0 0 0-.32.581l-.05.137v-1.48h-1.778v7.553h1.777v-3.884q0-.546.159-.943a1.5 1.5 0 0 1 .466-.636 2.5 2.5 0 0 1 .399-.253 2 2 0 0 1 .224-.099zm9.784 2.656.05-.922q0-1.743-.856-2.698-.838-.97-2.584-.97-1.119-.001-2.007.493a3.46 3.46 0 0 0-1.4 1.382q-.493.906-.493 2.106 0 1.07.428 1.975.428.89 1.332 1.432.906.526 2.255.526.973 0 1.668-.185l.044-.012.135-.04q.613-.184.984-.421l-.542-1.267q-.3.162-.642.274l-.297.087q-.51.131-1.3.131-.954 0-1.497-.444a1.6 1.6 0 0 1-.192-.193q-.366-.44-.512-1.234l-.004-.021zm-5.427-1.256-.003.022h3.752v-.138q-.011-.727-.288-1.118a1 1 0 0 0-.156-.176q-.46-.428-1.316-.428-.986 0-1.494.604-.379.45-.494 1.234zm-27.053 2.77V4.7h-1.86v12.095h5.333V15.15zm7.103-5.908v7.553h-1.843V9.242h1.843z'/%3E%3Cpath fill='%23fff' d='m19.63 11.151-.757-1.71-.345 1.71-1.12 5.644h-1.827L18.083 4.7h.197l3.325 6.533.988 2.19.988-2.19L26.839 4.7h.181l2.6 12.095h-1.81l-1.218-5.644-.362-1.71-.658 1.71-2.93 5.644h-.098l-2.913-5.644zm14.836 5.81q-1.02 0-1.893-.478a3.8 3.8 0 0 1-1.381-1.382q-.51-.906-.51-2.106 0-1.185.444-2.074a3.36 3.36 0 0 1 1.3-1.382q.839-.494 1.974-.494a3.3 3.3 0 0 1 1.234.231 3.3 3.3 0 0 1 .97.575q.396.33.527.659l.033-1.267h1.694v7.553H37.18l-.033-1.332q-.279.593-1.02 1.053a3.17 3.17 0 0 1-1.662.444zm.296-1.482q.938 0 1.58-.642.642-.66.642-1.711v-.115q0-.708-.296-1.267a2.2 2.2 0 0 0-.807-.872 2.1 2.1 0 0 0-1.119-.313q-1.053 0-1.629.692-.575.675-.575 1.76 0 1.103.559 1.795.577.675 1.645.675zm6.521-6.237h1.711v1.4q.906-1.597 2.83-1.597 1.596 0 2.584 1.02.988 1.005.988 2.914 0 1.185-.493 2.09a3.46 3.46 0 0 1-1.316 1.399 3.5 3.5 0 0 1-1.844.493q-.954 0-1.662-.329a2.67 2.67 0 0 1-1.086-.97l.017 5.134h-1.728zm4.048 6.22q1.07 0 1.645-.674.577-.69.576-1.762 0-1.119-.576-1.777-.558-.675-1.645-.675-.592 0-1.12.296-.51.28-.822.823-.296.527-.296 1.234v.115q0 .708.296 1.267.313.543.823.855.51.296 1.119.297z'/%3E%3Cpath fill='%23e1e3e9' d='M51.325 4.7h1.86v10.45h3.473v1.646h-5.333zm7.12 4.542h1.843v7.553h-1.843zm.905-1.415a1.16 1.16 0 0 1-.856-.346 1.17 1.17 0 0 1-.346-.856 1.05 1.05 0 0 1 .346-.79q.346-.329.856-.329.494 0 .839.33a1.05 1.05 0 0 1 .345.79 1.16 1.16 0 0 1-.345.855q-.33.346-.84.346zm7.875 9.133a3.17 3.17 0 0 1-1.662-.444q-.723-.46-1.004-1.053l-.033 1.332h-1.71V4.701h1.743v4.657l-.082 1.283q.279-.658 1.086-1.119a3.5 3.5 0 0 1 1.778-.477q1.119 0 1.942.51a3.24 3.24 0 0 1 1.283 1.4q.445.888.444 2.072 0 1.201-.526 2.09a3.5 3.5 0 0 1-1.382 1.366 3.8 3.8 0 0 1-1.876.477zm-.296-1.481q1.069 0 1.645-.675.577-.69.577-1.778 0-1.102-.577-1.776-.56-.691-1.645-.692a2.12 2.12 0 0 0-1.58.659q-.642.641-.642 1.694v.115q0 .71.296 1.267a2.4 2.4 0 0 0 .807.872 2.1 2.1 0 0 0 1.119.313zm5.927-6.237h1.777v1.481q.263-.757.856-1.217a2.14 2.14 0 0 1 1.349-.46q.527 0 .724.098l-.247 1.794q-.149-.099-.642-.099-.774 0-1.416.494-.626.493-.626 1.58v3.883h-1.777V9.242zm9.534 7.718q-1.35 0-2.255-.526-.904-.543-1.332-1.432a4.6 4.6 0 0 1-.428-1.975q0-1.2.493-2.106a3.46 3.46 0 0 1 1.4-1.382q.889-.495 2.007-.494 1.744 0 2.584.97.855.956.856 2.7 0 .444-.05.92h-5.43q.18 1.005.708 1.45.542.443 1.497.443.79 0 1.3-.131a4 4 0 0 0 .938-.362l.542 1.267q-.411.263-1.119.46-.708.198-1.711.197zm1.596-4.558q.016-1.02-.444-1.432-.46-.428-1.316-.428-1.728 0-1.991 1.86z'/%3E%3Cpath d='M5.074 15.948a.484.657 0 0 0-.486.659v1.84a.484.657 0 0 0 .486.659h4.101a.484.657 0 0 0 .486-.659v-1.84a.484.657 0 0 0-.486-.659zm3.56 1.16H5.617v.838h3.017z' style='fill:%23fff;fill-rule:evenodd;stroke-width:1.03600001'/%3E%3Cg style='stroke-width:1.12603545'%3E%3Cpath d='M-9.408-1.416c-3.833-.025-7.056 2.912-7.08 6.615-.02 3.08 1.653 4.832 3.107 6.268.903.892 1.721 1.74 2.32 2.902l-.525-.004c-.543-.003-.992.304-1.24.639a1.87 1.87 0 0 0-.362 1.121l-.011 1.877c-.003.402.104.787.347 1.125.244.338.688.653 1.23.656l4.142.028c.542.003.99-.306 1.238-.641a1.87 1.87 0 0 0 .363-1.121l.012-1.875a1.87 1.87 0 0 0-.348-1.127c-.243-.338-.688-.653-1.23-.656l-.518-.004c.597-1.145 1.425-1.983 2.348-2.87 1.473-1.414 3.18-3.149 3.2-6.226-.016-3.59-2.923-6.684-6.993-6.707m-.006 1.1v.002c3.274.02 5.92 2.532 5.9 5.6-.017 2.706-1.39 4.026-2.863 5.44-1.034.994-2.118 2.033-2.814 3.633-.018.041-.052.055-.075.065q-.013.004-.02.01a.34.34 0 0 1-.226.084.34.34 0 0 1-.224-.086l-.092-.077c-.699-1.615-1.768-2.669-2.781-3.67-1.454-1.435-2.797-2.762-2.78-5.478.02-3.067 2.7-5.545 5.975-5.523m-.02 2.826c-1.62-.01-2.944 1.315-2.955 2.96-.01 1.646 1.295 2.988 2.916 2.999h.002c1.621.01 2.943-1.316 2.953-2.961.011-1.646-1.294-2.988-2.916-2.998m-.005 1.1c1.017.006 1.829.83 1.822 1.89s-.83 1.874-1.848 1.867c-1.018-.006-1.829-.83-1.822-1.89s.83-1.874 1.848-1.868m-2.155 11.857 4.14.025c.271.002.49.305.487.676l-.013 1.875c-.003.37-.224.67-.495.668l-4.14-.025c-.27-.002-.487-.306-.485-.676l.012-1.875c.003-.37.224-.67.494-.668' style='color:%23000;font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:%23000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:evenodd;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:%23000;solid-opacity:1;vector-effect:none;fill:%23000;fill-opacity:.4;fill-rule:evenodd;stroke:none;stroke-width:2.47727823;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto' transform='translate(15.553 2.85)scale(.88807)'/%3E%3Cpath d='M-9.415-.316C-12.69-.338-15.37 2.14-15.39 5.207c-.017 2.716 1.326 4.041 2.78 5.477 1.013 1 2.081 2.055 2.78 3.67l.092.076a.34.34 0 0 0 .225.086.34.34 0 0 0 .227-.083l.019-.01c.022-.009.057-.024.074-.064.697-1.6 1.78-2.64 2.814-3.634 1.473-1.414 2.847-2.733 2.864-5.44.02-3.067-2.627-5.58-5.901-5.601m-.057 8.784c1.621.011 2.944-1.315 2.955-2.96.01-1.646-1.295-2.988-2.916-2.999-1.622-.01-2.945 1.315-2.955 2.96s1.295 2.989 2.916 3' style='clip-rule:evenodd;fill:%23e1e3e9;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.47727823;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:.4' transform='translate(15.553 2.85)scale(.88807)'/%3E%3Cpath d='M-11.594 15.465c-.27-.002-.492.297-.494.668l-.012 1.876c-.003.371.214.673.485.675l4.14.027c.271.002.492-.298.495-.668l.012-1.877c.003-.37-.215-.672-.485-.674z' style='clip-rule:evenodd;fill:%23fff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.47727823;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:.4' transform='translate(15.553 2.85)scale(.88807)'/%3E%3C/g%3E%3C/svg%3E")}}@media (forced-colors:active) and (prefers-color-scheme:light){a.maplibregl-ctrl-logo{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='23' fill='none'%3E%3Cpath fill='%23000' fill-opacity='.4' fill-rule='evenodd' d='M17.408 16.796h-1.827l2.501-12.095h.198l3.324 6.533.988 2.19.988-2.19 3.258-6.533h.181l2.6 12.095h-1.81l-1.218-5.644-.362-1.71-.658 1.71-2.929 5.644h-.098l-2.914-5.644-.757-1.71-.345 1.71zm1.958-3.42-.726 3.663a1.255 1.255 0 0 1-1.232 1.011h-1.827a1.255 1.255 0 0 1-1.229-1.509l2.501-12.095a1.255 1.255 0 0 1 1.23-1.001h.197a1.25 1.25 0 0 1 1.12.685l3.19 6.273 3.125-6.263a1.25 1.25 0 0 1 1.123-.695h.181a1.255 1.255 0 0 1 1.227.991l1.443 6.71a5 5 0 0 1 .314-.787l.009-.016a4.6 4.6 0 0 1 1.777-1.887c.782-.46 1.668-.667 2.611-.667a4.6 4.6 0 0 1 1.7.32l.306.134c.21-.16.474-.256.759-.256h1.694a1.255 1.255 0 0 1 1.212.925 1.255 1.255 0 0 1 1.212-.925h1.711c.284 0 .545.094.755.252.613-.3 1.312-.45 2.075-.45 1.356 0 2.557.445 3.482 1.4q.47.48.763 1.064V4.701a1.255 1.255 0 0 1 1.255-1.255h1.86A1.255 1.255 0 0 1 54.44 4.7v9.194h2.217c.19 0 .37.043.532.118v-4.77c0-.356.147-.678.385-.906a2.42 2.42 0 0 1-.682-1.71c0-.665.267-1.253.735-1.7a2.45 2.45 0 0 1 1.722-.674 2.43 2.43 0 0 1 1.705.675q.318.302.504.683V4.7a1.255 1.255 0 0 1 1.255-1.255h1.744A1.255 1.255 0 0 1 65.812 4.7v3.335a4.8 4.8 0 0 1 1.526-.246c.938 0 1.817.214 2.59.69a4.47 4.47 0 0 1 1.67 1.743v-.98a1.255 1.255 0 0 1 1.256-1.256h1.777c.233 0 .451.064.639.174a3.4 3.4 0 0 1 1.567-.372c.346 0 .861.02 1.285.232a1.25 1.25 0 0 1 .689 1.004 4.7 4.7 0 0 1 .853-.588c.795-.44 1.675-.647 2.61-.647 1.385 0 2.65.39 3.525 1.396.836.938 1.168 2.173 1.168 3.528q-.001.515-.056 1.051a1.255 1.255 0 0 1-.947 1.09l.408.952a1.255 1.255 0 0 1-.477 1.552c-.418.268-.92.463-1.458.612-.613.171-1.304.244-2.049.244-1.06 0-2.043-.207-2.886-.698l-.015-.008c-.798-.48-1.419-1.135-1.818-1.963l-.004-.008a5.8 5.8 0 0 1-.548-2.512q0-.429.053-.843a1.3 1.3 0 0 1-.333-.086l-.166-.004c-.223 0-.426.062-.643.228-.03.024-.142.139-.142.59v3.883a1.255 1.255 0 0 1-1.256 1.256h-1.777a1.255 1.255 0 0 1-1.256-1.256V15.69l-.032.057a4.8 4.8 0 0 1-1.86 1.833 5.04 5.04 0 0 1-2.484.634 4.5 4.5 0 0 1-1.935-.424 1.25 1.25 0 0 1-.764.258h-1.71a1.255 1.255 0 0 1-1.256-1.255V7.687a2.4 2.4 0 0 1-.428.625c.253.23.412.561.412.93v7.553a1.255 1.255 0 0 1-1.256 1.255h-1.843a1.25 1.25 0 0 1-.894-.373c-.228.23-.544.373-.894.373H51.32a1.255 1.255 0 0 1-1.256-1.255v-1.251l-.061.117a4.7 4.7 0 0 1-1.782 1.884 4.77 4.77 0 0 1-2.485.67 5.6 5.6 0 0 1-1.485-.188l.009 2.764a1.255 1.255 0 0 1-1.255 1.259h-1.729a1.255 1.255 0 0 1-1.255-1.255v-3.537a1.255 1.255 0 0 1-1.167.793h-1.679a1.25 1.25 0 0 1-.77-.263 4.5 4.5 0 0 1-1.945.429c-.885 0-1.724-.21-2.495-.632l-.017-.01a5 5 0 0 1-1.081-.836 1.255 1.255 0 0 1-1.254 1.312h-1.81a1.255 1.255 0 0 1-1.228-.99l-.782-3.625-2.044 3.939a1.25 1.25 0 0 1-1.115.676h-.098a1.25 1.25 0 0 1-1.116-.68l-2.061-3.994zM35.92 16.63l.207-.114.223-.15q.493-.356.735-.785l.061-.118.033 1.332h1.678V9.242h-1.694l-.033 1.267q-.133-.329-.526-.658l-.032-.028a3.2 3.2 0 0 0-.668-.428l-.27-.12a3.3 3.3 0 0 0-1.235-.23q-1.136-.001-1.974.493a3.36 3.36 0 0 0-1.3 1.382q-.445.89-.444 2.074 0 1.2.51 2.107a3.8 3.8 0 0 0 1.382 1.381 3.9 3.9 0 0 0 1.893.477q.795 0 1.455-.33zm-2.789-5.38q-.576.675-.575 1.762 0 1.102.559 1.794.576.675 1.645.675a2.25 2.25 0 0 0 .934-.19 2.2 2.2 0 0 0 .468-.29l.178-.161a2.2 2.2 0 0 0 .397-.561q.244-.5.244-1.15v-.115q0-.708-.296-1.267l-.043-.077a2.2 2.2 0 0 0-.633-.709l-.13-.086-.047-.028a2.1 2.1 0 0 0-1.073-.285q-1.052 0-1.629.692zm2.316 2.706c.163-.17.28-.407.28-.83v-.114c0-.292-.06-.508-.15-.68a.96.96 0 0 0-.353-.389.85.85 0 0 0-.464-.127c-.4 0-.56.114-.664.239l-.01.012c-.148.174-.275.45-.275.945 0 .506.122.801.27.99.097.11.266.224.68.224.303 0 .504-.09.687-.269zm7.545 1.705a2.6 2.6 0 0 0 .331.423q.319.33.755.548l.173.074q.65.255 1.49.255 1.02 0 1.844-.493a3.45 3.45 0 0 0 1.316-1.4q.493-.904.493-2.089 0-1.909-.988-2.913-.988-1.02-2.584-1.02-.898 0-1.575.347a3 3 0 0 0-.415.262l-.199.166a3.4 3.4 0 0 0-.64.82V9.242h-1.712v11.553h1.729l-.017-5.134zm.53-1.138q.206.29.48.5l.155.11.053.034q.51.296 1.119.297 1.07 0 1.645-.675.577-.69.576-1.762 0-1.119-.576-1.777-.558-.675-1.645-.675-.435 0-.835.16a2 2 0 0 0-.284.136 2 2 0 0 0-.363.254 2.2 2.2 0 0 0-.46.569l-.082.162a2.6 2.6 0 0 0-.213 1.072v.115q0 .707.296 1.267l.135.211zm.964-.818a1.1 1.1 0 0 0 .367.385.94.94 0 0 0 .476.118c.423 0 .59-.117.687-.23.159-.194.28-.478.28-.95 0-.53-.133-.8-.266-.952l-.021-.025c-.078-.094-.231-.221-.68-.221a1 1 0 0 0-.503.135l-.012.007a.86.86 0 0 0-.335.343c-.073.133-.132.324-.132.614v.115a1.4 1.4 0 0 0 .14.66zm15.7-6.222q.347-.346.346-.856a1.05 1.05 0 0 0-.345-.79 1.18 1.18 0 0 0-.84-.329q-.51 0-.855.33a1.05 1.05 0 0 0-.346.79q0 .51.346.855.345.346.856.346.51 0 .839-.346zm4.337 9.314.033-1.332q.191.403.59.747l.098.081a4 4 0 0 0 .316.224l.223.122a3.2 3.2 0 0 0 1.44.322 3.8 3.8 0 0 0 1.875-.477 3.5 3.5 0 0 0 1.382-1.366q.527-.89.526-2.09 0-1.184-.444-2.073a3.24 3.24 0 0 0-1.283-1.399q-.823-.51-1.942-.51a3.5 3.5 0 0 0-1.527.344l-.086.043-.165.09a3 3 0 0 0-.33.214q-.432.315-.656.707a2 2 0 0 0-.099.198l.082-1.283V4.701h-1.744v12.095zm.473-2.509a2.5 2.5 0 0 0 .566.7q.117.098.245.18l.144.08a2.1 2.1 0 0 0 .975.232q1.07 0 1.645-.675.576-.69.576-1.778 0-1.102-.576-1.777-.56-.691-1.645-.692a2.2 2.2 0 0 0-1.015.235q-.22.113-.415.282l-.15.142a2.1 2.1 0 0 0-.42.594q-.223.479-.223 1.1v.115q0 .705.293 1.26zm2.616-.293c.157-.191.28-.479.28-.967 0-.51-.13-.79-.276-.961l-.021-.026c-.082-.1-.232-.225-.67-.225a.87.87 0 0 0-.681.279l-.012.011c-.154.155-.274.38-.274.807v.115c0 .285.057.499.144.669a1.1 1.1 0 0 0 .367.405c.137.082.28.123.455.123.423 0 .59-.118.686-.23zm8.266-3.013q.345-.13.724-.14l.069-.002q.493 0 .642.099l.247-1.794q-.196-.099-.717-.099a2.3 2.3 0 0 0-.545.063 2 2 0 0 0-.411.148 2.2 2.2 0 0 0-.4.249 2.5 2.5 0 0 0-.485.499 2.7 2.7 0 0 0-.32.581l-.05.137v-1.48h-1.778v7.553h1.777v-3.884q0-.546.159-.943a1.5 1.5 0 0 1 .466-.636 2.5 2.5 0 0 1 .399-.253 2 2 0 0 1 .224-.099zm9.784 2.656.05-.922q0-1.743-.856-2.698-.838-.97-2.584-.97-1.119-.001-2.007.493a3.46 3.46 0 0 0-1.4 1.382q-.493.906-.493 2.106 0 1.07.428 1.975.428.89 1.332 1.432.906.526 2.255.526.973 0 1.668-.185l.044-.012.135-.04q.613-.184.984-.421l-.542-1.267q-.3.162-.642.274l-.297.087q-.51.131-1.3.131-.954 0-1.497-.444a1.6 1.6 0 0 1-.192-.193q-.366-.44-.512-1.234l-.004-.021zm-5.427-1.256-.003.022h3.752v-.138q-.011-.727-.288-1.118a1 1 0 0 0-.156-.176q-.46-.428-1.316-.428-.986 0-1.494.604-.379.45-.494 1.234zm-27.053 2.77V4.7h-1.86v12.095h5.333V15.15zm7.103-5.908v7.553h-1.843V9.242h1.843z'/%3E%3Cpath fill='%23fff' d='m19.63 11.151-.757-1.71-.345 1.71-1.12 5.644h-1.827L18.083 4.7h.197l3.325 6.533.988 2.19.988-2.19L26.839 4.7h.181l2.6 12.095h-1.81l-1.218-5.644-.362-1.71-.658 1.71-2.93 5.644h-.098l-2.913-5.644zm14.836 5.81q-1.02 0-1.893-.478a3.8 3.8 0 0 1-1.381-1.382q-.51-.906-.51-2.106 0-1.185.444-2.074a3.36 3.36 0 0 1 1.3-1.382q.839-.494 1.974-.494a3.3 3.3 0 0 1 1.234.231 3.3 3.3 0 0 1 .97.575q.396.33.527.659l.033-1.267h1.694v7.553H37.18l-.033-1.332q-.279.593-1.02 1.053a3.17 3.17 0 0 1-1.662.444zm.296-1.482q.938 0 1.58-.642.642-.66.642-1.711v-.115q0-.708-.296-1.267a2.2 2.2 0 0 0-.807-.872 2.1 2.1 0 0 0-1.119-.313q-1.053 0-1.629.692-.575.675-.575 1.76 0 1.103.559 1.795.577.675 1.645.675zm6.521-6.237h1.711v1.4q.906-1.597 2.83-1.597 1.596 0 2.584 1.02.988 1.005.988 2.914 0 1.185-.493 2.09a3.46 3.46 0 0 1-1.316 1.399 3.5 3.5 0 0 1-1.844.493q-.954 0-1.662-.329a2.67 2.67 0 0 1-1.086-.97l.017 5.134h-1.728zm4.048 6.22q1.07 0 1.645-.674.577-.69.576-1.762 0-1.119-.576-1.777-.558-.675-1.645-.675-.592 0-1.12.296-.51.28-.822.823-.296.527-.296 1.234v.115q0 .708.296 1.267.313.543.823.855.51.296 1.119.297z'/%3E%3Cpath fill='%23e1e3e9' d='M51.325 4.7h1.86v10.45h3.473v1.646h-5.333zm7.12 4.542h1.843v7.553h-1.843zm.905-1.415a1.16 1.16 0 0 1-.856-.346 1.17 1.17 0 0 1-.346-.856 1.05 1.05 0 0 1 .346-.79q.346-.329.856-.329.494 0 .839.33a1.05 1.05 0 0 1 .345.79 1.16 1.16 0 0 1-.345.855q-.33.346-.84.346zm7.875 9.133a3.17 3.17 0 0 1-1.662-.444q-.723-.46-1.004-1.053l-.033 1.332h-1.71V4.701h1.743v4.657l-.082 1.283q.279-.658 1.086-1.119a3.5 3.5 0 0 1 1.778-.477q1.119 0 1.942.51a3.24 3.24 0 0 1 1.283 1.4q.445.888.444 2.072 0 1.201-.526 2.09a3.5 3.5 0 0 1-1.382 1.366 3.8 3.8 0 0 1-1.876.477zm-.296-1.481q1.069 0 1.645-.675.577-.69.577-1.778 0-1.102-.577-1.776-.56-.691-1.645-.692a2.12 2.12 0 0 0-1.58.659q-.642.641-.642 1.694v.115q0 .71.296 1.267a2.4 2.4 0 0 0 .807.872 2.1 2.1 0 0 0 1.119.313zm5.927-6.237h1.777v1.481q.263-.757.856-1.217a2.14 2.14 0 0 1 1.349-.46q.527 0 .724.098l-.247 1.794q-.149-.099-.642-.099-.774 0-1.416.494-.626.493-.626 1.58v3.883h-1.777V9.242zm9.534 7.718q-1.35 0-2.255-.526-.904-.543-1.332-1.432a4.6 4.6 0 0 1-.428-1.975q0-1.2.493-2.106a3.46 3.46 0 0 1 1.4-1.382q.889-.495 2.007-.494 1.744 0 2.584.97.855.956.856 2.7 0 .444-.05.92h-5.43q.18 1.005.708 1.45.542.443 1.497.443.79 0 1.3-.131a4 4 0 0 0 .938-.362l.542 1.267q-.411.263-1.119.46-.708.198-1.711.197zm1.596-4.558q.016-1.02-.444-1.432-.46-.428-1.316-.428-1.728 0-1.991 1.86z'/%3E%3Cpath d='M5.074 15.948a.484.657 0 0 0-.486.659v1.84a.484.657 0 0 0 .486.659h4.101a.484.657 0 0 0 .486-.659v-1.84a.484.657 0 0 0-.486-.659zm3.56 1.16H5.617v.838h3.017z' style='fill:%23fff;fill-rule:evenodd;stroke-width:1.03600001'/%3E%3Cg style='stroke-width:1.12603545'%3E%3Cpath d='M-9.408-1.416c-3.833-.025-7.056 2.912-7.08 6.615-.02 3.08 1.653 4.832 3.107 6.268.903.892 1.721 1.74 2.32 2.902l-.525-.004c-.543-.003-.992.304-1.24.639a1.87 1.87 0 0 0-.362 1.121l-.011 1.877c-.003.402.104.787.347 1.125.244.338.688.653 1.23.656l4.142.028c.542.003.99-.306 1.238-.641a1.87 1.87 0 0 0 .363-1.121l.012-1.875a1.87 1.87 0 0 0-.348-1.127c-.243-.338-.688-.653-1.23-.656l-.518-.004c.597-1.145 1.425-1.983 2.348-2.87 1.473-1.414 3.18-3.149 3.2-6.226-.016-3.59-2.923-6.684-6.993-6.707m-.006 1.1v.002c3.274.02 5.92 2.532 5.9 5.6-.017 2.706-1.39 4.026-2.863 5.44-1.034.994-2.118 2.033-2.814 3.633-.018.041-.052.055-.075.065q-.013.004-.02.01a.34.34 0 0 1-.226.084.34.34 0 0 1-.224-.086l-.092-.077c-.699-1.615-1.768-2.669-2.781-3.67-1.454-1.435-2.797-2.762-2.78-5.478.02-3.067 2.7-5.545 5.975-5.523m-.02 2.826c-1.62-.01-2.944 1.315-2.955 2.96-.01 1.646 1.295 2.988 2.916 2.999h.002c1.621.01 2.943-1.316 2.953-2.961.011-1.646-1.294-2.988-2.916-2.998m-.005 1.1c1.017.006 1.829.83 1.822 1.89s-.83 1.874-1.848 1.867c-1.018-.006-1.829-.83-1.822-1.89s.83-1.874 1.848-1.868m-2.155 11.857 4.14.025c.271.002.49.305.487.676l-.013 1.875c-.003.37-.224.67-.495.668l-4.14-.025c-.27-.002-.487-.306-.485-.676l.012-1.875c.003-.37.224-.67.494-.668' style='color:%23000;font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:%23000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:evenodd;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:%23000;solid-opacity:1;vector-effect:none;fill:%23000;fill-opacity:.4;fill-rule:evenodd;stroke:none;stroke-width:2.47727823;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto' transform='translate(15.553 2.85)scale(.88807)'/%3E%3Cpath d='M-9.415-.316C-12.69-.338-15.37 2.14-15.39 5.207c-.017 2.716 1.326 4.041 2.78 5.477 1.013 1 2.081 2.055 2.78 3.67l.092.076a.34.34 0 0 0 .225.086.34.34 0 0 0 .227-.083l.019-.01c.022-.009.057-.024.074-.064.697-1.6 1.78-2.64 2.814-3.634 1.473-1.414 2.847-2.733 2.864-5.44.02-3.067-2.627-5.58-5.901-5.601m-.057 8.784c1.621.011 2.944-1.315 2.955-2.96.01-1.646-1.295-2.988-2.916-2.999-1.622-.01-2.945 1.315-2.955 2.96s1.295 2.989 2.916 3' style='clip-rule:evenodd;fill:%23e1e3e9;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.47727823;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:.4' transform='translate(15.553 2.85)scale(.88807)'/%3E%3Cpath d='M-11.594 15.465c-.27-.002-.492.297-.494.668l-.012 1.876c-.003.371.214.673.485.675l4.14.027c.271.002.492-.298.495-.668l.012-1.877c.003-.37-.215-.672-.485-.674z' style='clip-rule:evenodd;fill:%23fff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.47727823;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:.4' transform='translate(15.553 2.85)scale(.88807)'/%3E%3C/g%3E%3C/svg%3E")}}.maplibregl-ctrl.maplibregl-ctrl-attrib{background-color:hsla(0,0%,100%,.5);margin:0;padding:0 5px}@media screen{.maplibregl-ctrl-attrib.maplibregl-compact{background-color:#fff;border-radius:12px;box-sizing:content-box;color:#000;margin:10px;min-height:20px;padding:2px 24px 2px 0;position:relative}.maplibregl-ctrl-attrib.maplibregl-compact-show{padding:2px 28px 2px 8px;visibility:visible}.maplibregl-ctrl-bottom-left>.maplibregl-ctrl-attrib.maplibregl-compact-show,.maplibregl-ctrl-top-left>.maplibregl-ctrl-attrib.maplibregl-compact-show{border-radius:12px;padding:2px 8px 2px 28px}.maplibregl-ctrl-attrib.maplibregl-compact .maplibregl-ctrl-attrib-inner{display:none}.maplibregl-ctrl-attrib-button{background-color:hsla(0,0%,100%,.5);background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill-rule='evenodd' viewBox='0 0 20 20'%3E%3Cpath d='M4 10a6 6 0 1 0 12 0 6 6 0 1 0-12 0m5-3a1 1 0 1 0 2 0 1 1 0 1 0-2 0m0 3a1 1 0 1 1 2 0v3a1 1 0 1 1-2 0'/%3E%3C/svg%3E");border:0;border-radius:12px;box-sizing:border-box;cursor:pointer;display:none;height:24px;outline:none;position:absolute;right:0;top:0;width:24px}.maplibregl-ctrl-attrib summary.maplibregl-ctrl-attrib-button{-webkit-appearance:none;-moz-appearance:none;appearance:none;list-style:none}.maplibregl-ctrl-attrib summary.maplibregl-ctrl-attrib-button::-webkit-details-marker{display:none}.maplibregl-ctrl-bottom-left .maplibregl-ctrl-attrib-button,.maplibregl-ctrl-top-left .maplibregl-ctrl-attrib-button{left:0}.maplibregl-ctrl-attrib.maplibregl-compact .maplibregl-ctrl-attrib-button,.maplibregl-ctrl-attrib.maplibregl-compact-show .maplibregl-ctrl-attrib-inner{display:block}.maplibregl-ctrl-attrib.maplibregl-compact-show .maplibregl-ctrl-attrib-button{background-color:rgb(0 0 0/5%)}.maplibregl-ctrl-bottom-right>.maplibregl-ctrl-attrib.maplibregl-compact:after{bottom:0;right:0}.maplibregl-ctrl-top-right>.maplibregl-ctrl-attrib.maplibregl-compact:after{right:0;top:0}.maplibregl-ctrl-top-left>.maplibregl-ctrl-attrib.maplibregl-compact:after{left:0;top:0}.maplibregl-ctrl-bottom-left>.maplibregl-ctrl-attrib.maplibregl-compact:after{bottom:0;left:0}}@media screen and (forced-colors:active){.maplibregl-ctrl-attrib.maplibregl-compact:after{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23fff' fill-rule='evenodd' viewBox='0 0 20 20'%3E%3Cpath d='M4 10a6 6 0 1 0 12 0 6 6 0 1 0-12 0m5-3a1 1 0 1 0 2 0 1 1 0 1 0-2 0m0 3a1 1 0 1 1 2 0v3a1 1 0 1 1-2 0'/%3E%3C/svg%3E")}}@media screen and (forced-colors:active) and (prefers-color-scheme:light){.maplibregl-ctrl-attrib.maplibregl-compact:after{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill-rule='evenodd' viewBox='0 0 20 20'%3E%3Cpath d='M4 10a6 6 0 1 0 12 0 6 6 0 1 0-12 0m5-3a1 1 0 1 0 2 0 1 1 0 1 0-2 0m0 3a1 1 0 1 1 2 0v3a1 1 0 1 1-2 0'/%3E%3C/svg%3E")}}.maplibregl-ctrl-attrib a{color:rgba(0,0,0,.75);text-decoration:none}.maplibregl-ctrl-attrib a:hover{color:inherit;text-decoration:underline}.maplibregl-attrib-empty{display:none}.maplibregl-ctrl-scale{background-color:hsla(0,0%,100%,.75);border:2px solid #333;border-top:#333;box-sizing:border-box;color:#333;font-size:10px;padding:0 5px}.maplibregl-popup{display:flex;left:0;pointer-events:none;position:absolute;top:0;will-change:transform}.maplibregl-popup-anchor-top,.maplibregl-popup-anchor-top-left,.maplibregl-popup-anchor-top-right{flex-direction:column}.maplibregl-popup-anchor-bottom,.maplibregl-popup-anchor-bottom-left,.maplibregl-popup-anchor-bottom-right{flex-direction:column-reverse}.maplibregl-popup-anchor-left{flex-direction:row}.maplibregl-popup-anchor-right{flex-direction:row-reverse}.maplibregl-popup-tip{border:10px solid transparent;height:0;width:0;z-index:1}.maplibregl-popup-anchor-top .maplibregl-popup-tip{align-self:center;border-bottom-color:#fff;border-top:none}.maplibregl-popup-anchor-top-left .maplibregl-popup-tip{align-self:flex-start;border-bottom-color:#fff;border-left:none;border-top:none}.maplibregl-popup-anchor-top-right .maplibregl-popup-tip{align-self:flex-end;border-bottom-color:#fff;border-right:none;border-top:none}.maplibregl-popup-anchor-bottom .maplibregl-popup-tip{align-self:center;border-bottom:none;border-top-color:#fff}.maplibregl-popup-anchor-bottom-left .maplibregl-popup-tip{align-self:flex-start;border-bottom:none;border-left:none;border-top-color:#fff}.maplibregl-popup-anchor-bottom-right .maplibregl-popup-tip{align-self:flex-end;border-bottom:none;border-right:none;border-top-color:#fff}.maplibregl-popup-anchor-left .maplibregl-popup-tip{align-self:center;border-left:none;border-right-color:#fff}.maplibregl-popup-anchor-right .maplibregl-popup-tip{align-self:center;border-left-color:#fff;border-right:none}.maplibregl-popup-close-button{background-color:transparent;border:0;border-radius:0 3px 0 0;cursor:pointer;position:absolute;right:0;top:0}.maplibregl-popup-close-button:hover{background-color:rgb(0 0 0/5%)}.maplibregl-popup-content{background:#fff;border-radius:3px;box-shadow:0 1px 2px rgba(0,0,0,.1);padding:15px 10px;pointer-events:auto;position:relative}.maplibregl-popup-anchor-top-left .maplibregl-popup-content{border-top-left-radius:0}.maplibregl-popup-anchor-top-right .maplibregl-popup-content{border-top-right-radius:0}.maplibregl-popup-anchor-bottom-left .maplibregl-popup-content{border-bottom-left-radius:0}.maplibregl-popup-anchor-bottom-right .maplibregl-popup-content{border-bottom-right-radius:0}.maplibregl-popup-track-pointer{display:none}.maplibregl-popup-track-pointer *{pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.maplibregl-map:hover .maplibregl-popup-track-pointer{display:flex}.maplibregl-map:active .maplibregl-popup-track-pointer{display:none}.maplibregl-marker{left:0;position:absolute;top:0;transition:opacity .2s;will-change:transform}.maplibregl-user-location-dot,.maplibregl-user-location-dot:before{background-color:#1da1f2;border-radius:50%;height:15px;width:15px}.maplibregl-user-location-dot:before{animation:maplibregl-user-location-dot-pulse 2s infinite;content:"";position:absolute}.maplibregl-user-location-dot:after{border:2px solid #fff;border-radius:50%;box-shadow:0 0 3px rgba(0,0,0,.35);box-sizing:border-box;content:"";height:19px;left:-2px;position:absolute;top:-2px;width:19px}@keyframes maplibregl-user-location-dot-pulse{0%{opacity:1;transform:scale(1)}70%{opacity:0;transform:scale(3)}to{opacity:0;transform:scale(1)}}.maplibregl-user-location-dot-stale{background-color:#aaa}.maplibregl-user-location-dot-stale:after{display:none}.maplibregl-user-location-accuracy-circle{background-color:#1da1f233;border-radius:100%;height:1px;width:1px}.maplibregl-crosshair,.maplibregl-crosshair .maplibregl-interactive,.maplibregl-crosshair .maplibregl-interactive:active{cursor:crosshair}.maplibregl-boxzoom{background:#fff;border:2px dotted #202020;height:0;left:0;opacity:.5;position:absolute;top:0;width:0}.maplibregl-cooperative-gesture-screen{align-items:center;background:rgba(0,0,0,.4);color:#fff;display:flex;font-size:1.4em;inset:0;justify-content:center;line-height:1.2;opacity:0;padding:1rem;pointer-events:none;position:absolute;transition:opacity 1s ease 1s;z-index:99999}.maplibregl-cooperative-gesture-screen.maplibregl-show{opacity:1;transition:opacity .05s}.maplibregl-cooperative-gesture-screen .maplibregl-mobile-message{display:none}@media (hover:none),(width <= 480px){.maplibregl-cooperative-gesture-screen .maplibregl-desktop-message{display:none}.maplibregl-cooperative-gesture-screen .maplibregl-mobile-message{display:block}}.maplibregl-pseudo-fullscreen{height:100%!important;left:0!important;position:fixed!important;top:0!important;width:100%!important;z-index:99999}</style>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/relato.css">
+<link rel="stylesheet" href="assets/css/herbarios.css">
 </head>
 <body>
+
+<!-- ======================================================================
+     BARRA SUPERIOR
+     Para agregar una sección al menú, copia una línea <a> y crea su
+     <section data-view="..."> más abajo con el mismo nombre.
+     ====================================================================== -->
 <header class="topbar">
   <div class="wrap">
     <a class="brand" href="#inicio"><b>Red JANO</b><span>PROCAP · INIA</span></a>
@@ -232,20 +30,21 @@ footer .wrap{padding-block:20px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
       <a href="#ensayos" data-nav="ensayos">Ensayos</a>
       <a href="#catalogo" data-nav="catalogo">Catálogo</a>
       <a href="#monitoreo" data-nav="monitoreo">Monitoreo</a>
+      <a href="#herbarios" data-nav="herbarios">Herbarios</a>
     </nav>
   </div>
 </header>
-<div class="demo-note"><div class="wrap"><b>Vista de demostración.</b> Las cifras del inventario 2026 son reales. Las coordenadas son referenciales; las parcelas, la asignación de especies por jardín y las series NDVI son ilustrativas.</div></div>
+<div class="demo-note"><div class="wrap"><b>Versión de demostración.</b> Las cifras del inventario 2026 y los datos del herbario de Vista Florida son reales. Las coordenadas son referenciales; las parcelas, la asignación de especies por jardín y las series NDVI son ilustrativas.</div></div>
 
 <main class="wrap" id="app">
   <p class="loading" id="loading">Cargando datos de la red…</p>
 
-  <!-- INICIO -->
+  <!-- ==================== INICIO ==================== -->
   <section class="view" data-view="inicio" hidden>
     <div class="hero">
       <p class="eyebrow">Proyecto Caprino PROCAP · Componente forrajero</p>
       <h1>Red JANO<small>Jardines Agrostológicos como Nodos de Observación</small></h1>
-      <p class="lead">Siete jardines agrostológicos en cuatro gradientes ecológicas del Perú evalúan especies forrajeras para sistemas caprinos. Aquí se reúnen sus memorias técnicas, los ensayos en curso, las parcelas demostrativas y el monitoreo satelital.</p>
+      <p class="lead">Siete jardines agrostológicos en cuatro gradientes ecológicas del Perú evalúan especies forrajeras para sistemas caprinos. Aquí se reúnen sus memorias técnicas, los ensayos en curso, las parcelas demostrativas, el monitoreo satelital y los herbarios de cada estación.</p>
     </div>
     <div class="figures" id="figures"></div>
     <div class="two">
@@ -266,7 +65,7 @@ footer .wrap{padding-block:20px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
     </div>
   </section>
 
-  <!-- VISOR -->
+  <!-- ==================== VISOR ==================== -->
   <section class="view" data-view="visor" hidden>
     <div class="pagehead">
       <p class="eyebrow">Visor de parcelas</p>
@@ -284,7 +83,7 @@ footer .wrap{padding-block:20px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
           <label class="check"><input type="checkbox" id="lyr-parcelas" checked> Parcelas</label>
           <label class="check"><input type="checkbox" id="lyr-limites" checked> Límites departamentales</label>
           <label class="check"><input type="checkbox" id="lyr-sat"> Imagen satelital</label>
-          <p class="note" id="sat-note" hidden>La imagen satelital no se puede cargar en esta vista previa. En GitHub Pages sí se mostrará.</p>
+          <p class="note" id="sat-note" hidden>La imagen satelital no se pudo cargar en esta vista. En GitHub Pages sí se muestra.</p>
         </div>
         <div>
           <h3>Tipo de parcela</h3>
@@ -303,7 +102,7 @@ footer .wrap{padding-block:20px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
     </div>
   </section>
 
-  <!-- JARDINES -->
+  <!-- ==================== JARDINES ==================== -->
   <section class="view" data-view="jardines" hidden>
     <div class="pagehead">
       <p class="eyebrow">Memorias técnicas</p>
@@ -313,10 +112,10 @@ footer .wrap{padding-block:20px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
     <div class="cards" id="eea-cards"></div>
   </section>
 
-  <!-- MEMORIA DE UN JARDÍN -->
+  <!-- Memoria de un jardín (se genera desde los datos) -->
   <section class="view" data-view="jardin" hidden id="jardin-view"></section>
 
-  <!-- ENSAYOS -->
+  <!-- ==================== ENSAYOS ==================== -->
   <section class="view" data-view="ensayos" hidden>
     <div class="pagehead">
       <p class="eyebrow">Investigación en los jardines</p>
@@ -326,12 +125,12 @@ footer .wrap{padding-block:20px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
     <div id="trials"></div>
   </section>
 
-  <!-- CATÁLOGO -->
+  <!-- ==================== CATÁLOGO ==================== -->
   <section class="view" data-view="catalogo" hidden>
     <div class="pagehead">
-      <p class="eyebrow">Catálogo de especies</p>
+      <p class="eyebrow">Catálogo de especies forrajeras</p>
       <h1>Especies forrajeras de la red</h1>
-      <p class="lead">Cada ficha tiene una dirección fija y un código QR para colocarlo en la parcela. En este demo se muestran 13 de las 108 variedades.</p>
+      <p class="lead">Cada ficha tiene una dirección fija y un código QR para colocarlo en la parcela. Esta versión muestra 13 de las 108 variedades.</p>
     </div>
     <div class="toolbar">
       <div class="chips" id="cat-chips"></div>
@@ -340,22 +139,44 @@ footer .wrap{padding-block:20px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
     <div class="labels" id="labels"></div>
   </section>
 
-  <!-- FICHA DE ESPECIE -->
+  <!-- Ficha de especie forrajera (se genera desde los datos) -->
   <section class="view" data-view="especie" hidden id="especie-view"></section>
 
-  <!-- MONITOREO -->
+  <!-- ==================== MONITOREO ==================== -->
   <section class="view" data-view="monitoreo" hidden>
     <div class="pagehead">
-      <p class="eyebrow">Google Earth Engine</p>
+      <p class="eyebrow">Sentinel-2 · Google Earth Engine</p>
       <h1>Monitoreo satelital</h1>
-      <p class="lead">Series de índices de vegetación Sentinel-2 por jardín, exportadas desde Earth Engine y actualizadas cada mes.</p>
+      <p class="lead">Índices de vegetación por jardín, exportados desde Earth Engine. Primero el año completo en un solo cuadro, luego el recorrido mes a mes y al final cómo se calcula.</p>
     </div>
+
+    <div class="block season">
+      <h2>La temporada en un solo cuadro</h2>
+      <p class="muted prose">Cada punto es el NDVI medio de un jardín en ese mes; la raya negra marca la mediana de la red. Leída de izquierda a derecha es el ciclo forrajero: el piso de la época seca, el ascenso con las lluvias y el descenso hacia el estiaje. Pasa el cursor sobre un punto para ver el jardín.</p>
+      <div class="season-chart" id="season-chart"></div>
+      <div class="season-legend" id="season-legend"></div>
+    </div>
+
+    <!-- Relato mes a mes: el texto se edita en data/relato_ndvi.json -->
+    <div class="rl" id="relato"></div>
+
     <div class="block">
       <h2>NDVI mensual por jardín</h2>
-      <p class="muted">Serie simulada para el demo. Se reemplaza por la exportación de GEE sobre las parcelas reales.</p>
+      <p class="muted">Serie completa desde enero de 2025. Activa o desactiva jardines para compararlos.</p>
       <div class="chips" id="ndvi-chips"></div>
       <div id="ndvi-chart"></div>
     </div>
+
+    <div class="block">
+      <h2>Cómo se hizo</h2>
+      <ol class="howto">
+        <li><b>Imágenes</b><span>Colección Sentinel-2 SR armonizada, filtrada a las parcelas de cada jardín y con nubes por debajo de 30 %.</span></li>
+        <li><b>Índices</b><span>NDVI, EVI y SAVI por imagen en Earth Engine, promediados dentro de cada parcela a 10 m.</span></li>
+        <li><b>Exportación</b><span>Un CSV mensual por parcela que se guarda en el repositorio como <code>data/ndvi.json</code>.</span></li>
+        <li><b>Publicación</b><span>GitHub Pages vuelve a dibujar todos los gráficos de esta página a partir de ese archivo.</span></li>
+      </ol>
+    </div>
+
     <div class="two">
       <div class="block">
         <h2>Modelo de biomasa</h2>
@@ -368,6 +189,7 @@ footer .wrap{padding-block:20px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
         <div class="gee-slot" id="gee-slot"></div>
       </div>
     </div>
+
     <div class="block">
       <h2>Exportación desde Earth Engine</h2>
       <p class="muted">Script base que genera el CSV de NDVI por parcela que alimenta esta página.</p>
@@ -392,496 +214,29 @@ Export.table.toCloudStorage({
 });</code></pre>
     </div>
   </section>
+
+  <!-- ==================== HERBARIOS ====================
+       Se genera desde data/herbarios.json y herbarios/<eea>/ -->
+  <section class="view hb" data-view="herbarios" hidden id="herbarios-view"></section>
 </main>
 
 <footer>
   <div class="wrap">
     <span>Red JANO · Proyecto Caprino PROCAP (CUI 2506684) · Instituto Nacional de Innovación Agraria</span>
-    <span>Demo de estructura · octubre 2026</span>
+    <span>Versión de demostración · octubre 2026</span>
   </div>
 </footer>
 
+<dialog class="hb-lb" id="lightbox"><button class="x" type="button" aria-label="Cerrar">×</button><img id="lightbox-img" alt=""></dialog>
+
+<!-- Librerías externas -->
 <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
-<script>
-(function () {
-  "use strict";
-  // URL pública de la App de Earth Engine. Déjala vacía hasta publicarla.
-  var GEE_APP_URL = "";
-
-  var D = {};
-  var GRAD = {
-    costa: { nombre: "Costa árida", v: "--g-costa" },
-    bosque: { nombre: "Bosque seco", v: "--g-bosque" },
-    tropico: { nombre: "Trópico húmedo", v: "--g-tropico" },
-    andes: { nombre: "Andes", v: "--g-andes" }
-  };
-  var CAT = {
-    graminea: "Gramíneas", leguminosa: "Leguminosas", arbustiva: "Arbustivas",
-    herbacea: "Herbáceas", suculenta: "Suculentas"
-  };
-  var CAT_SING = { graminea: "Gramínea", leguminosa: "Leguminosa", arbustiva: "Arbustiva", herbacea: "Herbácea", suculenta: "Suculenta" };
-  var MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "set", "oct", "nov", "dic"];
-
-  function esc(s) {
-    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
-      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
-    });
-  }
-  function $(s) { return document.querySelector(s); }
-  function cssVar(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
-  function sw(g) { return '<i class="sw" style="background:var(' + GRAD[g].v + ')"></i>'; }
-  function eeaById(id) { return D.eeaList.find(function (e) { return e.id === id; }); }
-  function fmt(n) { return Number(n).toLocaleString("es-PE"); }
-
-  // ---------- carga de datos ----------
-  var FILES = {
-    eeas: "data/eeas.geojson", parcelas: "data/parcelas.geojson", dep: "data/departamentos.geojson",
-    especies: "data/especies.json", ensayos: "data/ensayos.json", ndvi: "data/ndvi_simulado.json",
-    resumen: "data/resumen.json"
-  };
-  Promise.all(Object.keys(FILES).map(function (k) {
-    return fetch(FILES[k]).then(function (r) {
-      if (!r.ok) throw new Error(FILES[k]);
-      return r.json();
-    }).then(function (j) { D[k] = j; });
-  })).then(start).catch(function (err) {
-    $("#loading").innerHTML = "No se pudieron cargar los datos (" + esc(err.message) + "). " +
-      "Si abriste el archivo con doble clic, publícalo en GitHub Pages o usa un servidor local: <code>python -m http.server</code>.";
-  });
-
-  function start() {
-    D.eeaList = D.eeas.features.map(function (f) {
-      var p = Object.assign({}, f.properties);
-      p.lon = f.geometry.coordinates[0]; p.lat = f.geometry.coordinates[1];
-      return p;
-    });
-    D.parcelas.features.forEach(function (f) {
-      var e = eeaById(f.properties.eea);
-      f.properties.gradiente = e ? e.gradiente : "";
-      f.properties.eea_nombre = e ? e.nombre : "";
-    });
-    $("#loading").hidden = true;
-    renderInicio(); renderJardines(); renderEnsayos(); renderCatalogo(); renderMonitoreo();
-    window.addEventListener("hashchange", route);
-    route();
-  }
-
-  // ---------- rutas ----------
-  var current = null;
-  function route() {
-    var h = (location.hash || "#inicio").slice(1) || "inicio";
-    var name = h, id = null;
-    if (h.indexOf("jardin-") === 0) { name = "jardin"; id = h.slice(7); }
-    if (h.indexOf("especie-") === 0) { name = "especie"; id = h.slice(8); }
-    if (!document.querySelector('[data-view="' + name + '"]')) name = "inicio";
-    if (name === "jardin" && !renderJardin(id)) name = "jardines";
-    if (name === "especie" && !renderEspecie(id)) name = "catalogo";
-    document.querySelectorAll("[data-view]").forEach(function (s) { s.hidden = s.getAttribute("data-view") !== name; });
-    var navKey = { jardin: "jardines", especie: "catalogo" }[name] || name;
-    document.querySelectorAll("[data-nav]").forEach(function (a) {
-      if (a.getAttribute("data-nav") === navKey) a.setAttribute("aria-current", "page");
-      else a.removeAttribute("aria-current");
-    });
-    if (name === "visor") showMap();
-    if (current !== h) window.scrollTo(0, 0);
-    current = h;
-  }
-
-  // ---------- inicio ----------
-  function renderInicio() {
-    var r = D.resumen;
-    var crec = Math.round((r.variedades / r.variedades_2024 - 1) * 100);
-    $("#figures").innerHTML = [
-      [r.eeas, "Estaciones experimentales"],
-      [r.gradientes, "Gradientes ecológicas"],
-      [r.variedades, "Variedades únicas · <em>+" + crec + "% vs 2024</em>"],
-      [r.registros, "Registros parcela-especie"]
-    ].map(function (f) { return '<div class="figure"><strong>' + f[0] + "</strong><span>" + f[1] + "</span></div>"; }).join("");
-
-    var max = Math.max.apply(null, r.categorias.map(function (c) { return c[1]; }));
-    $("#bars").innerHTML = r.categorias.map(function (c) {
-      return '<div class="bar"><span>' + c[0] + '</span><div class="track"><div class="fill" style="width:' +
-        (c[1] / max * 100).toFixed(1) + '%"></div></div><span class="n">' + c[1] + "</span></div>";
-    }).join("");
-
-    $("#grad-list").innerHTML = r.gradientes_detalle.map(function (g) {
-      var eeas = D.eeaList.filter(function (e) { return e.gradiente === g.id; }).map(function (e) { return e.nombre; });
-      return '<div class="grad-row">' + sw(g.id) + "<div><h3>" + esc(g.nombre) + "</h3><p>" + esc(eeas.join(" · ")) +
-        '</p></div><div class="n">' + g.variedades + "<small>variedades</small></div></div>";
-    }).join("");
-
-    $("#eea-table").innerHTML = "<thead><tr><th>Estación</th><th>Región</th><th>Gradiente</th><th class=\"r\">Registros</th><th>Memoria</th></tr></thead><tbody>" +
-      D.eeaList.map(function (e) {
-        return '<tr><td><a href="#jardin-' + e.id + '">' + esc(e.nombre) + "</a></td><td>" + esc(e.departamento) +
-          '</td><td><span class="tag">' + sw(e.gradiente) + GRAD[e.gradiente].nombre + '</span></td><td class="r">' + e.registros +
-          "</td><td>" + estadoPill(e.estado_memoria) + "</td></tr>";
-      }).join("") + "</tbody>";
-  }
-  function estadoPill(s) {
-    return s === "borrador" ? '<span class="pill ok">Borrador</span>' : '<span class="pill">Pendiente</span>';
-  }
-
-  // ---------- jardines ----------
-  function renderJardines() {
-    $("#eea-cards").innerHTML = D.eeaList.map(function (e) {
-      var np = D.parcelas.features.filter(function (f) { return f.properties.eea === e.id; }).length;
-      return '<a class="card" href="#jardin-' + e.id + '"><div class="meta"><span class="tag">' + sw(e.gradiente) +
-        GRAD[e.gradiente].nombre + "</span>" + estadoPill(e.estado_memoria) + "</div><h3>EEA " + esc(e.nombre) + "</h3><p>" +
-        esc(e.ubicacion) + ", " + esc(e.departamento) + '</p><p class="num">' + e.registros + " registros en inventario · " + np + " parcelas en el visor</p></a>";
-    }).join("");
-  }
-
-  function renderJardin(id) {
-    var e = eeaById(id);
-    if (!e) return false;
-    var parc = D.parcelas.features.filter(function (f) { return f.properties.eea === id; });
-    var esp = D.especies.filter(function (s) { return s.eeas.indexOf(id) >= 0; });
-    var ens = D.ensayos.filter(function (t) { return t.eea === id; });
-    var esVF = id === "vista-florida";
-    var contexto = esVF
-      ? "<p>Jardín ubicado en el bosque seco de la costa norte, en el distrito de Picsi. Los suelos son alcalinos (pH 7,5–8,2), lo que orientó la selección de Brachiarias tolerantes para el bloque demostrativo. El jardín abastece de forraje al núcleo caprino de la estación mediante corte escalonado de Cuba 22.</p>"
-      : '<div class="pending">Por completar: clima, suelos, disponibilidad de agua y sistema caprino de referencia de la estación.</div>';
-    var rows = parc.map(function (f) {
-      var p = f.properties;
-      return "<tr><td class=\"mono\">" + esc(p.codigo) + "</td><td>" + esc(p.tipo) + "</td><td>" + esc(p.especie) + '</td><td class="r">' + fmt(p.area_m2) + "</td></tr>";
-    }).join("");
-    var areaTot = parc.reduce(function (a, f) { return a + f.properties.area_m2; }, 0);
-    var html =
-      '<p class="breadcrumb"><a href="#jardines">Jardines</a> / EEA ' + esc(e.nombre) + "</p>" +
-      '<div class="pagehead"><p class="eyebrow">Memoria técnica</p><h1>EEA ' + esc(e.nombre) + "</h1></div>" +
-      '<dl class="metarow">' +
-      "<div><dt>Ubicación</dt><dd>" + esc(e.ubicacion) + ", " + esc(e.departamento) + "</dd></div>" +
-      "<div><dt>Gradiente</dt><dd><span class=\"tag\" style=\"color:inherit\">" + sw(e.gradiente) + GRAD[e.gradiente].nombre + "</span></dd></div>" +
-      '<div><dt>Coordenadas (ref.)</dt><dd class="num">' + e.lat.toFixed(4) + ", " + e.lon.toFixed(4) + "</dd></div>" +
-      "<div><dt>Estado</dt><dd>" + estadoPill(e.estado_memoria) + "</dd></div></dl>" +
-      '<div class="doc"><nav class="toc" aria-label="Contenido">' +
-      ["Ubicación y contexto", "Diseño y parcelas", "Especies instaladas", "Ensayos", "Monitoreo satelital"].map(function (t, i) {
-        return '<a href="#jardin-' + id + '" data-sec="s' + (i + 1) + '">' + (i + 1) + ". " + t + "</a>";
-      }).join("") + "</nav>" +
-      '<div class="doc-body">' +
-      sec(1, "Ubicación y contexto", '<div class="prose">' + contexto + "</div>") +
-      sec(2, "Diseño y parcelas",
-        "<p class=\"num\">" + parc.length + " parcelas · " + fmt(areaTot) + " m² en el visor.</p>" +
-        '<div class="table-scroll"><table><thead><tr><th>Código</th><th>Tipo</th><th>Especie / tratamiento</th><th class="r">Área (m²)</th></tr></thead><tbody>' +
-        rows + '</tbody></table></div><p><button class="btn ghost" type="button" data-fly="' + id + '">Ver en el visor</button></p>') +
-      sec(3, "Especies instaladas",
-        '<p class="num">' + e.registros + " registros parcela-especie en el inventario 2026. Especies del catálogo presentes en este demo:</p>" +
-        '<div class="chips">' + (esp.map(function (s) {
-          return '<a class="chip" href="#especie-' + s.id + '">' + esc(s.comun) + "</a>";
-        }).join("") || '<span class="muted">Sin especies del demo.</span>') + "</div>") +
-      sec(4, "Ensayos", ens.length
-        ? ens.map(function (t) { return '<p><a href="#ensayos">' + esc(t.titulo) + "</a> · " + esc(t.diseno) + "</p>"; }).join("")
-        : '<div class="pending">Sin ensayos registrados. Aquí se listarán los ensayos instalados en este jardín.</div>') +
-      sec(5, "Monitoreo satelital", '<p class="muted">NDVI medio mensual de las parcelas (serie simulada).</p><div id="jardin-chart"></div>') +
-      "</div></div>";
-    var v = $("#jardin-view");
-    v.innerHTML = html;
-    lineChart($("#jardin-chart"), [{ color: "var(" + GRAD[e.gradiente].v + ")", values: D.ndvi.series[id], area: true }], D.ndvi.meses, 220);
-    v.querySelectorAll("[data-sec]").forEach(function (a) {
-      a.addEventListener("click", function (ev) {
-        ev.preventDefault();
-        var t = document.getElementById(a.getAttribute("data-sec"));
-        if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-    v.querySelector("[data-fly]").addEventListener("click", function () { flyToEea(id); });
-    return true;
-  }
-  function sec(n, t, body) {
-    return '<section class="doc-sec" id="s' + n + '" style="scroll-margin-top:90px"><h2><span class="secno">' + n + "</span>" + t + "</h2>" + body + "</section>";
-  }
-
-  // ---------- ensayos ----------
-  function renderEnsayos() {
-    $("#trials").innerHTML = D.ensayos.map(function (t) {
-      var e = t.eea ? eeaById(t.eea) : null;
-      return '<article class="trial"><div class="head"><div class="chips"><span class="pill">' + esc(t.tipo) + '</span><span class="pill ok">' + esc(t.estado) + "</span></div><h3>" +
-        esc(t.titulo) + "</h3><p class=\"muted\">" + (e ? 'EEA <a href="#jardin-' + e.id + '">' + esc(e.nombre) + "</a>" : "Toda la red") + "</p></div>" +
-        '<dl class="kv"><dt>Diseño</dt><dd>' + esc(t.diseno) + "</dd>" +
-        (t.tratamientos.length ? "<dt>Tratamientos</dt><dd>" + t.tratamientos.map(esc).join(" · ") + "</dd>" : "") +
-        "<dt>Variables</dt><dd>" + t.variables.map(esc).join(" · ") + "</dd></dl></article>";
-    }).join("");
-  }
-
-  // ---------- catálogo ----------
-  var catFilter = "todas";
-  function renderCatalogo() {
-    var counts = {};
-    D.especies.forEach(function (s) { counts[s.categoria] = (counts[s.categoria] || 0) + 1; });
-    var chips = [["todas", "Todas", D.especies.length]].concat(Object.keys(CAT).map(function (k) { return [k, CAT[k], counts[k] || 0]; }));
-    $("#cat-chips").innerHTML = chips.map(function (c) {
-      return '<button class="chip" type="button" data-cat="' + c[0] + '" aria-pressed="' + (c[0] === catFilter) + '">' + c[1] + ' <span class="num">' + c[2] + "</span></button>";
-    }).join("");
-    $("#cat-chips").addEventListener("click", function (ev) {
-      var b = ev.target.closest("[data-cat]");
-      if (!b) return;
-      catFilter = b.getAttribute("data-cat");
-      $("#cat-chips").querySelectorAll("[data-cat]").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
-      drawLabels();
-    });
-    $("#sp-search").addEventListener("input", drawLabels);
-    drawLabels();
-  }
-  function drawLabels() {
-    var q = $("#sp-search").value.trim().toLowerCase();
-    var list = D.especies.filter(function (s) {
-      return (catFilter === "todas" || s.categoria === catFilter) &&
-        (!q || (s.comun + " " + s.cientifico + " " + (s.cultivar || "")).toLowerCase().indexOf(q) >= 0);
-    });
-    $("#labels").innerHTML = list.length ? list.map(function (s) {
-      return '<a class="label" href="#especie-' + s.id + '"><span class="eyebrow">' + CAT_SING[s.categoria] + "</span><h3>" + esc(s.comun) +
-        '</h3><span class="sci">' + esc(s.cientifico) + '</span><div class="foot"><span>' + esc(s.familia) + "</span><span>" + esc(s.uso) + "</span></div></a>";
-    }).join("") : '<p class="muted">Ninguna especie coincide con la búsqueda.</p>';
-  }
-
-  function renderEspecie(id) {
-    var s = D.especies.find(function (x) { return x.id === id; });
-    if (!s) return false;
-    var url = location.origin + location.pathname + "#especie-" + s.id;
-    var svg = "";
-    try {
-      var qr = qrcode(0, "M"); qr.addData(url); qr.make();
-      svg = qr.createSvgTag({ cellSize: 4, margin: 0, scalable: true, alt: "Código QR de la ficha" });
-    } catch (e) { svg = '<p class="note">QR no disponible</p>'; }
-    var en = s.eeas.map(function (id) {
-      var e = eeaById(id);
-      return '<a class="chip" href="#jardin-' + id + '">' + sw(e.gradiente) + esc(e.nombre) + "</a>";
-    }).join("");
-    $("#especie-view").innerHTML =
-      '<p class="breadcrumb"><a href="#catalogo">Catálogo</a> / ' + esc(s.comun) + "</p>" +
-      '<article class="sheet"><div class="block">' +
-      '<p class="eyebrow">' + CAT_SING[s.categoria] + " · " + esc(s.familia) + "</p><h1>" + esc(s.comun) + '</h1><p class="sci">' + esc(s.cientifico) + "</p>" +
-      '<dl class="kv"><dt>Cultivar</dt><dd>' + esc(s.cultivar || "—") + "</dd><dt>Uso</dt><dd>" + esc(s.uso) + "</dd><dt>Descripción</dt><dd>" + esc(s.nota) +
-      '</dd><dt>Presente en</dt><dd><div class="chips">' + en + "</div></dd></dl></div>" +
-      '<div class="qr"><div class="code">' + svg + '</div><span class="note">Código QR para la parcela</span><span class="url" id="sp-url">' + esc(url) +
-      '</span><button class="btn ghost" type="button" id="copy-url">Copiar enlace</button></div></article>';
-    $("#copy-url").addEventListener("click", function () {
-      var b = this;
-      var done = function () { b.textContent = "Enlace copiado"; setTimeout(function () { b.textContent = "Copiar enlace"; }, 1800); };
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(url).then(done, selectUrl);
-      } else selectUrl();
-    });
-    return true;
-  }
-  function selectUrl() {
-    var r = document.createRange(); r.selectNodeContents($("#sp-url"));
-    var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
-  }
-
-  // ---------- monitoreo ----------
-  var ndviOn = { "vista-florida": true, "donoso": true, "huarangopampa": true, "canaan": true };
-  function renderMonitoreo() {
-    $("#ndvi-chips").innerHTML = D.eeaList.map(function (e) {
-      return '<button class="chip" type="button" data-eea="' + e.id + '" aria-pressed="' + !!ndviOn[e.id] + '">' + sw(e.gradiente) + esc(e.nombre) + "</button>";
-    }).join("");
-    $("#ndvi-chips").addEventListener("click", function (ev) {
-      var b = ev.target.closest("[data-eea]");
-      if (!b) return;
-      var id = b.getAttribute("data-eea");
-      ndviOn[id] = !ndviOn[id];
-      b.setAttribute("aria-pressed", ndviOn[id]);
-      drawNdvi();
-    });
-    drawNdvi();
-    var slot = $("#gee-slot");
-    if (GEE_APP_URL) {
-      slot.innerHTML = '<iframe src="' + esc(GEE_APP_URL) + '" title="App de Earth Engine" loading="lazy"></iframe>';
-    } else {
-      slot.innerHTML = "<p><b>Aquí irá la App de Earth Engine.</b></p><p class=\"muted\">Al publicar el script de biomasa como Earth Engine App, su dirección se coloca en la variable <code>GEE_APP_URL</code> y la herramienta aparece embebida en esta sección.</p>";
-    }
-  }
-  function drawNdvi() {
-    var series = D.eeaList.filter(function (e) { return ndviOn[e.id]; }).map(function (e) {
-      return { color: "var(" + GRAD[e.gradiente].v + ")", values: D.ndvi.series[e.id], label: e.nombre };
-    });
-    lineChart($("#ndvi-chart"), series, D.ndvi.meses, 300);
-  }
-
-  function lineChart(el, series, meses, h) {
-    var W = 760, H = h, L = 40, R = 76, T = 12, B = 30;
-    var n = meses.length;
-    var x = function (i) { return L + i * (W - L - R) / (n - 1); };
-    var y = function (v) { return T + (1 - v) * (H - T - B); };
-    var s = '<svg class="chart" viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="NDVI mensual">';
-    [0, 0.2, 0.4, 0.6, 0.8, 1].forEach(function (v) {
-      s += '<line class="grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + y(v) + '" y2="' + y(v) + '"/>' +
-        '<text x="' + (L - 8) + '" y="' + (y(v) + 4) + '" text-anchor="end">' + v.toFixed(1) + "</text>";
-    });
-    meses.forEach(function (m, i) {
-      var mm = parseInt(m.slice(5), 10);
-      if ((mm - 1) % 3 === 0) s += '<text x="' + x(i) + '" y="' + (H - 8) + '" text-anchor="middle">' + MESES[mm - 1] + " " + m.slice(2, 4) + "</text>";
-    });
-    if (!series.length) s += '<text x="' + (W / 2) + '" y="' + (H / 2) + '" text-anchor="middle">Selecciona al menos un jardín</text>';
-    series.forEach(function (se) {
-      var pts = se.values.map(function (v, i) { return x(i).toFixed(1) + "," + y(v).toFixed(1); });
-      if (se.area) s += '<polygon points="' + x(0) + "," + y(0) + " " + pts.join(" ") + " " + x(n - 1) + "," + y(0) + '" style="fill:' + se.color + ';opacity:.14"/>';
-      s += '<polyline points="' + pts.join(" ") + '" style="fill:none;stroke:' + se.color + ';stroke-width:2.2;stroke-linejoin:round"/>';
-      var lv = se.values[n - 1];
-      s += '<circle cx="' + x(n - 1) + '" cy="' + y(lv) + '" r="3.5" style="fill:' + se.color + '"/>';
-      s += '<text x="' + (x(n - 1) + 8) + '" y="' + (y(lv) + 4) + '" style="fill:' + se.color + '">' + lv.toFixed(2) + "</text>";
-    });
-    el.innerHTML = s + "</svg>";
-  }
-
-  // ---------- visor ----------
-  var map = null, mapLoaded = false, pendingFly = null;
-  var activeGrad = { costa: true, bosque: true, tropico: true, andes: true };
-
-  function mapColors() {
-    return {
-      water: cssVar("--water"), land: cssVar("--land"), line: cssVar("--line"), fg: cssVar("--fg"), bg: cssVar("--surface"),
-      costa: cssVar("--g-costa"), bosque: cssVar("--g-bosque"), tropico: cssVar("--g-tropico"), andes: cssVar("--g-andes"),
-      ensayo: cssVar("--t-ensayo"), demo: cssVar("--t-demo"), muted: cssVar("--muted")
-    };
-  }
-  function gradExpr(c) { return ["match", ["get", "gradiente"], "costa", c.costa, "bosque", c.bosque, "tropico", c.tropico, "andes", c.andes, c.fg]; }
-
-  function buildSidebar() {
-    $("#grad-filter").innerHTML = Object.keys(GRAD).map(function (g) {
-      var n = D.eeaList.filter(function (e) { return e.gradiente === g; }).length;
-      return '<label class="check"><input type="checkbox" data-grad="' + g + '" checked>' + sw(g) + GRAD[g].nombre + '<span class="count">' + n + " EEA</span></label>";
-    }).join("");
-    $("#grad-filter").addEventListener("change", function (ev) {
-      var g = ev.target.getAttribute("data-grad");
-      if (!g) return;
-      activeGrad[g] = ev.target.checked;
-      applyFilter();
-    });
-    $("#eea-btns").innerHTML = D.eeaList.map(function (e) {
-      return '<button class="eea-btn" type="button" data-go="' + e.id + '">' + sw(e.gradiente) + esc(e.nombre) + "</button>";
-    }).join("") + '<button class="eea-btn" type="button" data-go="__peru"><span class="muted">Ver todo el país</span></button>';
-    $("#eea-btns").addEventListener("click", function (ev) {
-      var b = ev.target.closest("[data-go]");
-      if (!b) return;
-      var id = b.getAttribute("data-go");
-      if (id === "__peru") fitPeru(); else flyTo(id);
-    });
-    $("#lyr-parcelas").addEventListener("change", function () { vis(["parcelas-fill", "parcelas-line"], this.checked); });
-    $("#lyr-limites").addEventListener("change", function () { vis(["dep-line"], this.checked); });
-    $("#lyr-sat").addEventListener("change", function () { vis(["sat"], this.checked); });
-  }
-  function vis(ids, on) { if (!mapLoaded) return; ids.forEach(function (id) { map.setLayoutProperty(id, "visibility", on ? "visible" : "none"); }); }
-  function applyFilter() {
-    if (!mapLoaded) return;
-    var act = Object.keys(activeGrad).filter(function (g) { return activeGrad[g]; });
-    var f = ["in", ["get", "gradiente"], ["literal", act]];
-    ["eeas", "parcelas-fill", "parcelas-line"].forEach(function (l) { map.setFilter(l, f); });
-  }
-  function fitPeru() { map.fitBounds([[-81.4, -18.4], [-68.6, -0.1]], { padding: 24, duration: 900 }); }
-  function flyTo(id) {
-    var e = eeaById(id);
-    if (e && map) map.flyTo({ center: [e.lon, e.lat], zoom: 17, duration: 1600 });
-  }
-  function flyToEea(id) {
-    pendingFly = id;
-    if (location.hash === "#visor") showMap(); else location.hash = "visor";
-  }
-
-  function showMap() {
-    if (typeof maplibregl === "undefined") {
-      $("#map").innerHTML = '<p class="note" style="padding:20px">No se pudo cargar la librería del mapa.</p>';
-      return;
-    }
-    if (!map) initMap();
-    else {
-      map.resize();
-      if (pendingFly && mapLoaded) { flyTo(pendingFly); pendingFly = null; }
-    }
-  }
-
-  function initMap() {
-    buildSidebar();
-    var c = mapColors();
-    map = new maplibregl.Map({
-      container: "map",
-      attributionControl: { compact: true },
-      bounds: [[-81.4, -18.4], [-68.6, -0.1]],
-      fitBoundsOptions: { padding: 24 },
-      style: {
-        version: 8,
-        sources: {
-          sat: { type: "raster", tileSize: 256, maxzoom: 19,
-            tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"],
-            attribution: "Imagen © Esri, Maxar, Earthstar Geographics" },
-          dep: { type: "geojson", data: D.dep, attribution: "Límites: INEI" },
-          parcelas: { type: "geojson", data: D.parcelas },
-          eeas: { type: "geojson", data: D.eeas }
-        },
-        layers: [
-          { id: "bg", type: "background", paint: { "background-color": c.water } },
-          { id: "dep-fill", type: "fill", source: "dep", paint: { "fill-color": c.land } },
-          { id: "sat", type: "raster", source: "sat", layout: { visibility: "none" } },
-          { id: "dep-line", type: "line", source: "dep", paint: { "line-color": c.muted, "line-width": 0.7, "line-opacity": 0.6 } },
-          { id: "parcelas-fill", type: "fill", source: "parcelas", minzoom: 12,
-            paint: { "fill-color": ["match", ["get", "tipo"], "Ensayo", c.ensayo, c.demo], "fill-opacity": 0.6 } },
-          { id: "parcelas-line", type: "line", source: "parcelas", minzoom: 12, paint: { "line-color": c.fg, "line-width": 0.6, "line-opacity": 0.7 } },
-          { id: "eeas", type: "circle", source: "eeas",
-            paint: {
-              "circle-radius": ["interpolate", ["linear"], ["zoom"], 4, 7, 9, 10, 13, 6, 16, 0],
-              "circle-color": gradExpr(c), "circle-stroke-color": c.bg, "circle-stroke-width": 2,
-              "circle-opacity": ["interpolate", ["linear"], ["zoom"], 14, 1, 16, 0],
-              "circle-stroke-opacity": ["interpolate", ["linear"], ["zoom"], 14, 1, 16, 0]
-            } }
-        ]
-      }
-    });
-    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
-    map.addControl(new maplibregl.ScaleControl({ unit: "metric" }), "bottom-left");
-
-    map.on("load", function () {
-      mapLoaded = true;
-      applyFilter();
-      if (pendingFly) { flyTo(pendingFly); pendingFly = null; }
-    });
-    map.on("error", function (ev) {
-      if (ev && ev.sourceId === "sat") { $("#sat-note").hidden = false; }
-    });
-    map.on("click", "eeas", function (ev) {
-      var p = ev.features[0].properties;
-      var e = eeaById(p.id);
-      new maplibregl.Popup({ offset: 10 }).setLngLat([e.lon, e.lat]).setHTML(
-        '<span class="tag">' + sw(e.gradiente) + GRAD[e.gradiente].nombre + "</span><h4>EEA " + esc(e.nombre) + "</h4><span class=\"muted\">" +
-        esc(e.ubicacion) + ", " + esc(e.departamento) + " · " + e.registros + ' registros</span><div class="popup-actions"><a href="#jardin-' + e.id +
-        '">Memoria técnica</a><a href="#visor" data-zoom="' + e.id + '">Ver parcelas</a></div>').addTo(map);
-    });
-    document.getElementById("map").addEventListener("click", function (ev) {
-      var a = ev.target.closest("[data-zoom]");
-      if (!a) return;
-      ev.preventDefault();
-      flyTo(a.getAttribute("data-zoom"));
-    });
-    map.on("click", "parcelas-fill", function (ev) {
-      var p = ev.features[0].properties;
-      $("#parcela-info").innerHTML = '<strong class="mono">' + esc(p.codigo) + "</strong><dl><dt>Jardín</dt><dd>" + esc(p.eea_nombre) +
-        "</dd><dt>Tipo</dt><dd>" + esc(p.tipo) + "</dd><dt>Especie</dt><dd>" + esc(p.especie) + '</dd><dt>Área</dt><dd class="num">' + fmt(p.area_m2) + " m²</dd>" +
-        (p.ensayo && p.ensayo !== "null" ? '<dt>Ensayo</dt><dd><a href="#ensayos">Ver ensayo</a></dd>' : "") + "</dl>";
-    });
-    ["eeas", "parcelas-fill"].forEach(function (l) {
-      map.on("mouseenter", l, function () { map.getCanvas().style.cursor = "pointer"; });
-      map.on("mouseleave", l, function () { map.getCanvas().style.cursor = ""; });
-    });
-  }
-
-  function recolorMap() {
-    if (!mapLoaded) return;
-    var c = mapColors();
-    map.setPaintProperty("bg", "background-color", c.water);
-    map.setPaintProperty("dep-fill", "fill-color", c.land);
-    map.setPaintProperty("dep-line", "line-color", c.muted);
-    map.setPaintProperty("parcelas-fill", "fill-color", ["match", ["get", "tipo"], "Ensayo", c.ensayo, c.demo]);
-    map.setPaintProperty("parcelas-line", "line-color", c.fg);
-    map.setPaintProperty("eeas", "circle-color", gradExpr(c));
-    map.setPaintProperty("eeas", "circle-stroke-color", c.bg);
-  }
-  if (window.matchMedia) {
-    var mq = matchMedia("(prefers-color-scheme: dark)");
-    if (mq.addEventListener) mq.addEventListener("change", recolorMap);
-  }
-  new MutationObserver(recolorMap).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
-})();
-</script>
-
+<!-- Código del sitio: core primero, luego cada sección -->
+<script src="assets/js/core.js"></script>
+<script src="assets/js/jardines.js"></script>
+<script src="assets/js/monitoreo.js"></script>
+<script src="assets/js/herbarios.js"></script>
+<script>JANO.start();</script>
 </body>
 </html>

@@ -1,0 +1,6 @@
+{
+ "nombre": "Red JANO",
+ "url_publica": "",
+ "gee_app_url": "",
+ "_ayuda": "url_publica: dirección final del sitio (por ejemplo https://observatorio-forrajero-procap.github.io/red-jano/). Los QR de fichas y rótulos apuntan ahí; si se deja vacía se usa la dirección desde la que se abre la página. gee_app_url: dirección pública de la App de Earth Engine que se muestra en Monitoreo."
+}

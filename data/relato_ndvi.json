@@ -1,0 +1,21 @@
+{
+ "titulo": "Un año de verdor en la Red JANO",
+ "subtitulo": "NDVI mensual de los siete jardines agrostológicos, octubre 2025 – setiembre 2026",
+ "intro": "Cuatro gradientes ecológicas, un mismo índice y una sola escala de color. Al bajar por la página, el mapa muestra cómo se enciende y se apaga el verde de cada jardín a lo largo del año, y por qué el calendario forrajero no puede ser el mismo en Picsi, Huaral, Utcubamba o Huamanga.",
+ "aviso": "Serie simulada para la demostración. Los textos de cada mes son de ejemplo y se reescriben cuando llegue la exportación real de Earth Engine.",
+ "meses": [
+  { "mes": "2025-10", "texto": "Octubre es el piso del año en el bosque seco. Vista Florida, El Chira y Los Cedros llegan con el suelo desnudo y el estrato herbáceo agotado. Solo el jardín de Amazonas conserva un verde alto todo el año." },
+  { "mes": "2025-11", "texto": "Con las primeras lluvias de la sierra, Canaán empieza a reverdecer. En la costa norte el cambio todavía es mínimo: el forraje depende del riego y de la reserva de corte." },
+  { "mes": "2025-12", "texto": "Diciembre marca el inicio del rebrote general. La costa central, con riego estable, se mantiene alrededor de 0.5 y deja de ser la excepción." },
+  { "mes": "2026-01", "texto": "Las lluvias de verano llegan al bosque seco y el NDVI se dispara. Es el momento de cosechar semilla de nativas y de planificar el ensilado." },
+  { "mes": "2026-02", "texto": "Febrero es el pico de la red. Casi todos los jardines superan 0.5 y la diferencia entre gradientes es la más pequeña del año." },
+  { "mes": "2026-03", "texto": "Marzo sostiene el máximo. El trópico húmedo alcanza su valor más alto y el bosque seco empieza a perder vigor en las parcelas sin riego." },
+  { "mes": "2026-04", "texto": "Abril abre el descenso. Termina la temporada de lluvias en la sierra y la costa norte comienza a secarse de oeste a este." },
+  { "mes": "2026-05", "texto": "En mayo la red se separa en dos: el trópico sigue verde y el resto pierde una décima de NDVI por mes. Las arbustivas forrajeras empiezan a sostener la dieta caprina." },
+  { "mes": "2026-06", "texto": "Junio es el inicio de la época crítica. El bosque seco cae por debajo de 0.3 y el valor del forraje conservado se hace evidente." },
+  { "mes": "2026-07", "texto": "En julio la mediana de la red se hunde. Canaán entra en su estiaje y el contraste con Amazonas es el mayor del año." },
+  { "mes": "2026-08", "texto": "Agosto es el mínimo de la red. Las tres estaciones del bosque seco rondan 0.1: es el mes en que más importa tener bancos de proteína y reserva hídrica como la tuna." },
+  { "mes": "2026-09", "texto": "Setiembre cierra el ciclo cerca del piso. La costa con riego muestra un leve repunte y el bosque seco espera las lluvias del próximo verano." }
+ ],
+ "cierre": "Leída en conjunto, la serie muestra dos calendarios forrajeros: uno de abundancia breve y escasez larga en el bosque seco y los Andes, y otro estable en el trópico húmedo y la costa con riego. Ese contraste es el que la red quiere documentar con datos de campo."
+}
