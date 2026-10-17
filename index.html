@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/relato.css">
 <link rel="stylesheet" href="assets/css/herbarios.css">
+<link rel="stylesheet" href="assets/css/suelos.css">
 </head>
 <body>
 
@@ -33,6 +34,7 @@
       <a href="#catalogo" data-nav="catalogo">Catálogo</a>
       <a href="#monitoreo" data-nav="monitoreo">Monitoreo</a>
       <a href="#herbarios" data-nav="herbarios">Herbarios</a>
+      <a href="#suelos" data-nav="suelos">Suelos</a>
     </nav>
     <button class="theme-toggle" type="button" id="theme-toggle" aria-pressed="false" aria-label="Modo oscuro" title="Cambiar entre modo claro y oscuro">
       <span class="knob" aria-hidden="true"></span>
@@ -225,6 +227,18 @@ Export.table.toCloudStorage({
   <!-- ==================== HERBARIOS ====================
        Se genera desde data/herbarios.json y herbarios/<eea>/ -->
   <section class="view hb" data-view="herbarios" hidden id="herbarios-view"></section>
+
+  <!-- ==================== SUELOS ====================
+       Diagnóstico suelo–forraje. La herramienta se genera desde assets/js/suelos.js
+       y los datos de la carpeta suelos/ -->
+  <section class="view" data-view="suelos" hidden>
+    <div class="pagehead">
+      <p class="eyebrow">Herramienta de diagnóstico</p>
+      <h1>Diagnóstico suelo–forraje</h1>
+      <p class="lead">De la foto de una calicata y un análisis de fertilidad a una recomendación de especies forrajeras, contrastada con SoilGrids. Abre con la calicata interpretativa del jardín de la EEA Vista Florida; sube tu foto y tus datos para evaluar otro sitio.</p>
+    </div>
+    <div class="su" id="su-body"><p class="loading">Cargando la herramienta…</p></div>
+  </section>
 </main>
 
 <footer>
@@ -244,6 +258,7 @@ Export.table.toCloudStorage({
 <script src="assets/js/jardines.js"></script>
 <script src="assets/js/monitoreo.js"></script>
 <script src="assets/js/herbarios.js"></script>
+<script src="assets/js/suelos.js"></script>
 <script>JANO.start();</script>
 </body>
 </html>

@@ -1,0 +1,813 @@
+{
+ "_ayuda": "Tolerancias orientativas de cada especie para la sección Suelos. ph: [mínimo, óptimo bajo, óptimo alto, máximo]. ce: [umbral sin pérdida, CEe con 50 % de pérdida] en dS/m (extracto de saturación). prof: [profundidad mínima, profundidad óptima] de raíces en cm. drenaje, carbonatos, camg y arena: tolerancia de 0 (nada) a 1 (alta) al mal drenaje, a CaCO3, a una relación Ca/Mg alta y a texturas arenosas. psi: PSI máximo tolerado (%). mo y p: demanda de materia orgánica y de fósforo, de 0 (baja) a 1 (alta). ficha: id de la especie en data/especies.json para enlazar su ficha (null si no está en el catálogo). Fuentes: Maas y Hoffman (1977), Ayers y Westcot (FAO 29), FAO Ecocrop, Tropical Forages, Watanabe et al. (2023). Validar con los ensayos de la red.",
+ "especies": [
+  {
+   "id": "cuba-22",
+   "comun": "Cuba 22",
+   "cientifico": "Cenchrus purpureus × C. americanus",
+   "grupo": "graminea",
+   "uso": [
+    "Corte",
+    "Ensilaje"
+   ],
+   "caprinos": true,
+   "ficha": "cuba-22",
+   "ph": [
+    4.5,
+    5.5,
+    7.5,
+    8.5
+   ],
+   "ce": [
+    3.0,
+    9
+   ],
+   "prof": [
+    25,
+    60
+   ],
+   "drenaje": 0.4,
+   "carbonatos": 0.6,
+   "camg": 0.3,
+   "psi": 15,
+   "arena": 0.5,
+   "mo": 0.8,
+   "p": 0.4,
+   "nota": "Ya establecido en Vista Florida para el corte escalonado. Exige riego frecuente y nitrógeno fraccionado."
+  },
+  {
+   "id": "maralfalfa",
+   "comun": "Maralfalfa",
+   "cientifico": "Cenchrus purpureus",
+   "grupo": "graminea",
+   "uso": [
+    "Corte"
+   ],
+   "caprinos": true,
+   "ficha": "maralfalfa",
+   "ph": [
+    5.0,
+    5.5,
+    7.5,
+    8.3
+   ],
+   "ce": [
+    2.5,
+    8
+   ],
+   "prof": [
+    30,
+    60
+   ],
+   "drenaje": 0.4,
+   "carbonatos": 0.5,
+   "camg": 0.3,
+   "psi": 12,
+   "arena": 0.4,
+   "mo": 0.85,
+   "p": 0.4,
+   "nota": "Más exigente en materia orgánica y agua que Cuba 22."
+  },
+  {
+   "id": "brs-kurumi",
+   "comun": "BRS Kurumi",
+   "cientifico": "Cenchrus purpureus",
+   "grupo": "graminea",
+   "uso": [
+    "Pastoreo"
+   ],
+   "caprinos": true,
+   "ficha": "brs-kurumi",
+   "ph": [
+    4.5,
+    5.5,
+    7.5,
+    8.3
+   ],
+   "ce": [
+    3.0,
+    9
+   ],
+   "prof": [
+    25,
+    50
+   ],
+   "drenaje": 0.4,
+   "carbonatos": 0.55,
+   "camg": 0.3,
+   "psi": 15,
+   "arena": 0.45,
+   "mo": 0.85,
+   "p": 0.4,
+   "nota": "Elefante enano para pastoreo rotativo; exige fertilidad alta."
+  },
+  {
+   "id": "king-grass",
+   "comun": "King grass morado",
+   "cientifico": "C. purpureus × C. americanus",
+   "grupo": "graminea",
+   "uso": [
+    "Corte"
+   ],
+   "caprinos": true,
+   "ficha": null,
+   "ph": [
+    4.5,
+    5.5,
+    7.5,
+    8.3
+   ],
+   "ce": [
+    3.0,
+    9
+   ],
+   "prof": [
+    25,
+    60
+   ],
+   "drenaje": 0.45,
+   "carbonatos": 0.55,
+   "camg": 0.3,
+   "psi": 15,
+   "arena": 0.45,
+   "mo": 0.8,
+   "p": 0.4,
+   "nota": "Comportamiento agronómico similar a Cameroon y Maralfalfa (Watanabe et al., 2023)."
+  },
+  {
+   "id": "cameroon",
+   "comun": "Cameroon",
+   "cientifico": "Cenchrus purpureus cv. Cameroon",
+   "grupo": "graminea",
+   "uso": [
+    "Corte"
+   ],
+   "caprinos": true,
+   "ficha": null,
+   "ph": [
+    4.5,
+    5.5,
+    7.5,
+    8.3
+   ],
+   "ce": [
+    3.0,
+    9
+   ],
+   "prof": [
+    25,
+    60
+   ],
+   "drenaje": 0.45,
+   "carbonatos": 0.55,
+   "camg": 0.2,
+   "psi": 15,
+   "arena": 0.45,
+   "mo": 0.8,
+   "p": 0.4,
+   "nota": "Mayor contenido de Mg en el forraje (Watanabe et al., 2023): útil cuando la relación Ca/Mg del suelo es alta."
+  },
+  {
+   "id": "mulato-ii",
+   "comun": "Mulato II",
+   "cientifico": "Urochloa híbrido",
+   "grupo": "graminea",
+   "uso": [
+    "Pastoreo",
+    "Corte"
+   ],
+   "caprinos": true,
+   "ficha": "mulato-ii",
+   "ph": [
+    4.5,
+    5.0,
+    7.5,
+    8.0
+   ],
+   "ce": [
+    2.5,
+    7
+   ],
+   "prof": [
+    20,
+    40
+   ],
+   "drenaje": 0.3,
+   "carbonatos": 0.35,
+   "camg": 0.3,
+   "psi": 10,
+   "arena": 0.5,
+   "mo": 0.5,
+   "p": 0.4,
+   "nota": "Alta calidad nutritiva; tolera poco el encharcamiento."
+  },
+  {
+   "id": "xaraes",
+   "comun": "Xaraés",
+   "cientifico": "Urochloa brizantha",
+   "grupo": "graminea",
+   "uso": [
+    "Pastoreo"
+   ],
+   "caprinos": true,
+   "ficha": "xaraes",
+   "ph": [
+    4.0,
+    5.0,
+    7.0,
+    8.0
+   ],
+   "ce": [
+    2.0,
+    6.5
+   ],
+   "prof": [
+    20,
+    40
+   ],
+   "drenaje": 0.5,
+   "carbonatos": 0.3,
+   "camg": 0.3,
+   "psi": 10,
+   "arena": 0.5,
+   "mo": 0.5,
+   "p": 0.3,
+   "nota": "Más tolerante a humedad temporal que Marandú."
+  },
+  {
+   "id": "marandu",
+   "comun": "Marandú",
+   "cientifico": "Urochloa brizantha",
+   "grupo": "graminea",
+   "uso": [
+    "Pastoreo"
+   ],
+   "caprinos": true,
+   "ficha": "marandu",
+   "ph": [
+    4.0,
+    5.0,
+    7.0,
+    8.0
+   ],
+   "ce": [
+    2.0,
+    6.5
+   ],
+   "prof": [
+    20,
+    40
+   ],
+   "drenaje": 0.4,
+   "carbonatos": 0.3,
+   "camg": 0.3,
+   "psi": 10,
+   "arena": 0.6,
+   "mo": 0.4,
+   "p": 0.3,
+   "nota": "Adaptada a suelos ácidos; pierde vigor en suelos calcáreos."
+  },
+  {
+   "id": "mombaza",
+   "comun": "Mombaza",
+   "cientifico": "Megathyrsus maximus",
+   "grupo": "graminea",
+   "uso": [
+    "Pastoreo",
+    "Corte"
+   ],
+   "caprinos": true,
+   "ficha": null,
+   "ph": [
+    5.0,
+    5.5,
+    7.5,
+    8.0
+   ],
+   "ce": [
+    3.5,
+    11
+   ],
+   "prof": [
+    25,
+    50
+   ],
+   "drenaje": 0.3,
+   "carbonatos": 0.5,
+   "camg": 0.3,
+   "psi": 15,
+   "arena": 0.5,
+   "mo": 0.6,
+   "p": 0.4,
+   "nota": "Buen rebrote bajo riego; sensible al encharcamiento."
+  },
+  {
+   "id": "buffel",
+   "comun": "Pasto buffel",
+   "cientifico": "Cenchrus ciliaris",
+   "grupo": "graminea",
+   "uso": [
+    "Pastoreo",
+    "Heno"
+   ],
+   "caprinos": true,
+   "ficha": null,
+   "ph": [
+    6.0,
+    6.5,
+    8.5,
+    9.0
+   ],
+   "ce": [
+    6.0,
+    15
+   ],
+   "prof": [
+    15,
+    30
+   ],
+   "drenaje": 0.2,
+   "carbonatos": 0.9,
+   "camg": 0.7,
+   "psi": 25,
+   "arena": 0.9,
+   "mo": 0.2,
+   "p": 0.3,
+   "nota": "Muy tolerante a sequía, salinidad moderada y suelos arenosos calcáreos."
+  },
+  {
+   "id": "rhodes",
+   "comun": "Pasto Rhodes",
+   "cientifico": "Chloris gayana",
+   "grupo": "graminea",
+   "uso": [
+    "Pastoreo",
+    "Heno"
+   ],
+   "caprinos": true,
+   "ficha": null,
+   "ph": [
+    5.0,
+    5.5,
+    8.0,
+    9.0
+   ],
+   "ce": [
+    7.0,
+    20
+   ],
+   "prof": [
+    15,
+    40
+   ],
+   "drenaje": 0.7,
+   "carbonatos": 0.8,
+   "camg": 0.6,
+   "psi": 30,
+   "arena": 0.7,
+   "mo": 0.4,
+   "p": 0.3,
+   "nota": "Tolerante a sales y a sodio; estolonífero, cubre bien el suelo."
+  },
+  {
+   "id": "sorgo",
+   "comun": "Sorgo forrajero",
+   "cientifico": "Sorghum bicolor × S. sudanense",
+   "grupo": "graminea",
+   "uso": [
+    "Corte",
+    "Ensilaje"
+   ],
+   "caprinos": true,
+   "ficha": null,
+   "ph": [
+    5.5,
+    6.0,
+    7.8,
+    8.5
+   ],
+   "ce": [
+    6.8,
+    9.9
+   ],
+   "prof": [
+    30,
+    60
+   ],
+   "drenaje": 0.4,
+   "carbonatos": 0.4,
+   "camg": 0.5,
+   "psi": 15,
+   "arena": 0.6,
+   "mo": 0.6,
+   "p": 0.4,
+   "nota": "Tolerante a sales; propenso a clorosis férrica en suelos calcáreos. Cuidar el ácido cianhídrico en rebrotes jóvenes."
+  },
+  {
+   "id": "maiz",
+   "comun": "Maíz chala",
+   "cientifico": "Zea mays",
+   "grupo": "graminea",
+   "uso": [
+    "Corte",
+    "Ensilaje"
+   ],
+   "caprinos": true,
+   "ficha": null,
+   "ph": [
+    5.5,
+    6.0,
+    7.5,
+    8.2
+   ],
+   "ce": [
+    1.7,
+    5.9
+   ],
+   "prof": [
+    30,
+    60
+   ],
+   "drenaje": 0.3,
+   "carbonatos": 0.4,
+   "camg": 0.5,
+   "psi": 10,
+   "arena": 0.4,
+   "mo": 0.8,
+   "p": 0.5,
+   "nota": "Sensible a sales: requiere una fracción de lavado alta."
+  },
+  {
+   "id": "alfalfa",
+   "comun": "Alfalfa",
+   "cientifico": "Medicago sativa",
+   "grupo": "leguminosa",
+   "uso": [
+    "Corte",
+    "Heno"
+   ],
+   "caprinos": true,
+   "ficha": "alfalfa",
+   "ph": [
+    6.2,
+    6.8,
+    7.8,
+    8.4
+   ],
+   "ce": [
+    2.0,
+    8.8
+   ],
+   "prof": [
+    40,
+    90
+   ],
+   "drenaje": 0.1,
+   "carbonatos": 0.7,
+   "camg": 0.4,
+   "psi": 12,
+   "arena": 0.5,
+   "mo": 0.5,
+   "p": 1,
+   "nota": "Raíz profunda: la capa compactada limita su persistencia. Exige buen drenaje y fósforo."
+  },
+  {
+   "id": "centrosema",
+   "comun": "Centrosema",
+   "cientifico": "Centrosema macrocarpum",
+   "grupo": "leguminosa",
+   "uso": [
+    "Asociación"
+   ],
+   "caprinos": true,
+   "ficha": "centrosema",
+   "ph": [
+    4.5,
+    5.0,
+    6.8,
+    7.5
+   ],
+   "ce": [
+    1.5,
+    4.5
+   ],
+   "prof": [
+    20,
+    40
+   ],
+   "drenaje": 0.5,
+   "carbonatos": 0.2,
+   "camg": 0.3,
+   "psi": 8,
+   "arena": 0.5,
+   "mo": 0.3,
+   "p": 0.8,
+   "nota": "Sensible a pH alcalino, carbonatos y sales."
+  },
+  {
+   "id": "stylosanthes",
+   "comun": "Stylosanthes",
+   "cientifico": "Stylosanthes guianensis",
+   "grupo": "leguminosa",
+   "uso": [
+    "Asociación",
+    "Banco proteico"
+   ],
+   "caprinos": true,
+   "ficha": "stylosanthes",
+   "ph": [
+    4.0,
+    4.5,
+    6.8,
+    7.5
+   ],
+   "ce": [
+    1.5,
+    4.5
+   ],
+   "prof": [
+    20,
+    50
+   ],
+   "drenaje": 0.3,
+   "carbonatos": 0.2,
+   "camg": 0.3,
+   "psi": 8,
+   "arena": 0.7,
+   "mo": 0.2,
+   "p": 0.6,
+   "nota": "Adaptada a suelos ácidos y pobres; no prospera en suelos calcáreos."
+  },
+  {
+   "id": "clitoria",
+   "comun": "Clitoria",
+   "cientifico": "Clitoria ternatea",
+   "grupo": "leguminosa",
+   "uso": [
+    "Corte",
+    "Asociación"
+   ],
+   "caprinos": true,
+   "ficha": null,
+   "ph": [
+    5.5,
+    6.0,
+    8.0,
+    8.5
+   ],
+   "ce": [
+    3.0,
+    8
+   ],
+   "prof": [
+    20,
+    50
+   ],
+   "drenaje": 0.4,
+   "carbonatos": 0.7,
+   "camg": 0.4,
+   "psi": 15,
+   "arena": 0.6,
+   "mo": 0.3,
+   "p": 0.8,
+   "nota": "Tolerante a alcalinidad y sequía; buena aceptación por caprinos."
+  },
+  {
+   "id": "leucaena",
+   "comun": "Leucaena",
+   "cientifico": "Leucaena leucocephala",
+   "grupo": "arbustiva",
+   "uso": [
+    "Banco proteico",
+    "Ramoneo"
+   ],
+   "caprinos": true,
+   "ficha": null,
+   "ph": [
+    5.5,
+    6.5,
+    8.0,
+    8.5
+   ],
+   "ce": [
+    4.0,
+    10
+   ],
+   "prof": [
+    40,
+    100
+   ],
+   "drenaje": 0.2,
+   "carbonatos": 0.9,
+   "camg": 0.4,
+   "psi": 15,
+   "arena": 0.5,
+   "mo": 0.3,
+   "p": 0.8,
+   "nota": "Prospera en suelos alcalinos y calcáreos. Limitar a 30 % de la dieta por la mimosina."
+  },
+  {
+   "id": "gliricidia",
+   "comun": "Gliricidia",
+   "cientifico": "Gliricidia sepium",
+   "grupo": "arbustiva",
+   "uso": [
+    "Banco proteico",
+    "Cerco vivo"
+   ],
+   "caprinos": true,
+   "ficha": "gliricidia",
+   "ph": [
+    5.0,
+    5.5,
+    7.5,
+    8.5
+   ],
+   "ce": [
+    3.0,
+    9
+   ],
+   "prof": [
+    40,
+    100
+   ],
+   "drenaje": 0.3,
+   "carbonatos": 0.6,
+   "camg": 0.4,
+   "psi": 12,
+   "arena": 0.5,
+   "mo": 0.3,
+   "p": 0.8,
+   "nota": "Cerco vivo forrajero; tolera podas frecuentes."
+  },
+  {
+   "id": "morera",
+   "comun": "Morera",
+   "cientifico": "Morus alba",
+   "grupo": "arbustiva",
+   "uso": [
+    "Banco proteico",
+    "Corte"
+   ],
+   "caprinos": true,
+   "ficha": "morera",
+   "ph": [
+    5.5,
+    6.0,
+    7.8,
+    8.5
+   ],
+   "ce": [
+    2.5,
+    7
+   ],
+   "prof": [
+    40,
+    100
+   ],
+   "drenaje": 0.3,
+   "carbonatos": 0.6,
+   "camg": 0.4,
+   "psi": 12,
+   "arena": 0.5,
+   "mo": 0.6,
+   "p": 0.6,
+   "nota": "Forraje de alta digestibilidad; exige materia orgánica y riego."
+  },
+  {
+   "id": "titonia",
+   "comun": "Botón de oro",
+   "cientifico": "Tithonia diversifolia",
+   "grupo": "arbustiva",
+   "uso": [
+    "Banco proteico",
+    "Corte"
+   ],
+   "caprinos": true,
+   "ficha": "titonia",
+   "ph": [
+    4.5,
+    5.0,
+    7.5,
+    8.0
+   ],
+   "ce": [
+    2.0,
+    6
+   ],
+   "prof": [
+    30,
+    60
+   ],
+   "drenaje": 0.3,
+   "carbonatos": 0.4,
+   "camg": 0.4,
+   "psi": 10,
+   "arena": 0.4,
+   "mo": 0.7,
+   "p": 0.6,
+   "nota": "Crece rápido y recicla fósforo; sensible a sales."
+  },
+  {
+   "id": "algarrobo",
+   "comun": "Algarrobo",
+   "cientifico": "Prosopis pallida",
+   "grupo": "arbustiva",
+   "uso": [
+    "Silvopastoril",
+    "Vaina"
+   ],
+   "caprinos": true,
+   "ficha": null,
+   "ph": [
+    6.0,
+    7.0,
+    8.5,
+    9.5
+   ],
+   "ce": [
+    8.0,
+    25
+   ],
+   "prof": [
+    30,
+    150
+   ],
+   "drenaje": 0.3,
+   "carbonatos": 1,
+   "camg": 0.8,
+   "psi": 40,
+   "arena": 0.9,
+   "mo": 0.05,
+   "p": 0.2,
+   "nota": "Nativo del bosque seco; su raíz pivotante atraviesa capas compactadas."
+  },
+  {
+   "id": "atriplex",
+   "comun": "Atriplex",
+   "cientifico": "Atriplex nummularia",
+   "grupo": "arbustiva",
+   "uso": [
+    "Ramoneo"
+   ],
+   "caprinos": true,
+   "ficha": null,
+   "ph": [
+    6.5,
+    7.0,
+    9.0,
+    10.0
+   ],
+   "ce": [
+    12,
+    35
+   ],
+   "prof": [
+    25,
+    60
+   ],
+   "drenaje": 0.3,
+   "carbonatos": 1,
+   "camg": 0.9,
+   "psi": 50,
+   "arena": 0.8,
+   "mo": 0.05,
+   "p": 0.2,
+   "nota": "Halófita: opción para sectores salinos. Alta en sales, combinar con otras fuentes."
+  },
+  {
+   "id": "tuna",
+   "comun": "Tuna forrajera",
+   "cientifico": "Opuntia ficus-indica",
+   "grupo": "suculenta",
+   "uso": [
+    "Corte",
+    "Reserva seca"
+   ],
+   "caprinos": true,
+   "ficha": "tuna",
+   "ph": [
+    6.0,
+    6.5,
+    8.5,
+    9.0
+   ],
+   "ce": [
+    3.0,
+    8
+   ],
+   "prof": [
+    15,
+    30
+   ],
+   "drenaje": 0.05,
+   "carbonatos": 0.95,
+   "camg": 0.7,
+   "psi": 15,
+   "arena": 1,
+   "mo": 0.1,
+   "p": 0.2,
+   "nota": "Reserva de forraje y agua para la época seca; no tolera el encharcamiento."
+  }
+ ]
+}
