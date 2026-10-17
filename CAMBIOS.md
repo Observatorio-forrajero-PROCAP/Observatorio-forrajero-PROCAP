@@ -2,6 +2,15 @@
 
 Cada mejora queda anotada aquí con la referencia que la inspiró, para saber de dónde salió cada idea.
 
+## Octubre 2026 · versión 0.4
+- Nueva sección **Suelos**: diagnóstico suelo–forraje en cuatro pasos (sitio, perfil y color, fertilidad, uso forrajero). Nace de la calicata interpretativa del jardín de la EEA Vista Florida (10/09/2025) y de la plataforma interactiva preparada a partir de ella.
+  - Mapa MapLibre con imagen satelital, distritos de Lambayeque y estaciones de la red; consulta SoilGrids en vivo en el punto elegido, con respaldo en 13 perfiles de referencia.
+  - Color Munsell de cada horizonte medido desde la foto (ΔE2000), con corrección de balance de blancos y lectura del GPS de la foto.
+  - Aptitud de 24 especies forrajeras, enlazadas a sus fichas del catálogo cuando existen, con escenarios de manejo y exportación en JSON, CSV y SVG.
+  - Mapa nacional de fertilidad del INIA incrustado.
+  - Lectura de la foto con IA opcional, mediante un servicio en Cloudflare (`herramientas/ia-suelos/`).
+- Nuevo color de estado `--crit` (limitante) en `base.css`.
+
 ## Octubre 2026 · versión 0.3.2
 - Interruptor de modo claro / oscuro en la barra superior. El sitio abre en modo claro y recuerda la elección de cada visitante en su navegador.
 

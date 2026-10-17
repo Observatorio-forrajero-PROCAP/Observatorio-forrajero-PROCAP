@@ -18,7 +18,7 @@
   --t-ensayo:#9A5434; --t-demo:#2D6A4F; --qr-bg:#FFFFFF;
   --water:#DCE4DE; --land:#F7F9F4;
   /* estados y herbario */
-  --ochre:#9A6416; --ok:#2F7A46; --warn:#A5541B; --info:#3B6386; --neutral:#6F7770;
+  --ochre:#9A6416; --ok:#2F7A46; --warn:#A5541B; --info:#3B6386; --neutral:#6F7770; --crit:#B3382C;
   --label-paper:#FCFCF8; --label-ink:#1A1A16; --sheet:#E8ECE4;
   /* tipografía */
   --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
@@ -34,7 +34,7 @@
   --fg:#E2EADF; --muted:#9BAA9F; --accent:#7DBE95; --accent-soft:#22402F; --on-accent:#0F1912;
   --g-costa:#E0AE52; --g-bosque:#D28462; --g-tropico:#55BFA2; --g-andes:#8E9FD8;
   --t-ensayo:#D28462; --t-demo:#7DBE95; --water:#0C120F; --land:#1B241F;
-  --ochre:#D9A85C; --ok:#7CC593; --warn:#E39A62; --info:#8EB4D8; --neutral:#A3ABA4; --sheet:#202823;
+  --ochre:#D9A85C; --ok:#7CC593; --warn:#E39A62; --info:#8EB4D8; --neutral:#A3ABA4; --sheet:#202823; --crit:#EC8576;
 }
 
 *{box-sizing:border-box}

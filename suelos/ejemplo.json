@@ -1,0 +1,148 @@
+{
+ "_ayuda": "Caso de ejemplo con el que abre la herramienta: calicata interpretativa del jardín agrostológico de la EEA Vista Florida. 'recuadro' es la zona de la foto que se mide para cada horizonte, en fracción del ancho y alto de la imagen [x0, y0, x1, y1]. 'laboratorio' guarda el valor medio y el peor caso; 'rango' es el rango reportado por el laboratorio.",
+ "nombre": "Calicata interpretativa — Jardín Agrostológico EEA Vista Florida",
+ "eea": "vista-florida",
+ "fecha": "2025-09-10",
+ "lat": -6.726595,
+ "lon": -79.78203,
+ "utm": "17M 634612.74 E 9256307.33 N",
+ "foto": "suelos/img/calicata-vista-florida.jpg",
+ "horizontes": [
+  {
+   "nombre": "A",
+   "desde": 0,
+   "hasta": 15,
+   "recuadro": [
+    0.25,
+    0.19,
+    0.5,
+    0.25
+   ],
+   "nota": "Capa arable"
+  },
+  {
+   "nombre": "AB",
+   "desde": 15,
+   "hasta": 20,
+   "recuadro": [
+    0.27,
+    0.27,
+    0.5,
+    0.31
+   ],
+   "nota": "Transición, límite de raíces"
+  },
+  {
+   "nombre": "B",
+   "desde": 20,
+   "hasta": 30,
+   "recuadro": [
+    0.41,
+    0.37,
+    0.5,
+    0.44
+   ],
+   "nota": "Capa dura y compactada"
+  },
+  {
+   "nombre": "C",
+   "desde": 30,
+   "hasta": 70,
+   "recuadro": [
+    0.21,
+    0.53,
+    0.45,
+    0.6
+   ],
+   "nota": "Fracción arenosa desde 40 cm"
+  }
+ ],
+ "laboratorio": {
+  "medio": {
+   "ph": 7.58,
+   "ce": 3.6,
+   "mo": 2.76,
+   "caco3": 5.9,
+   "p": 29,
+   "ca": 44.5,
+   "mg": 3.82,
+   "k": 3.12,
+   "na": 1.5,
+   "cic": 14.3,
+   "sand": 74.5,
+   "clay": 8.2,
+   "root": 20,
+   "cTop": 20,
+   "cBot": 30,
+   "ecw": 0.6
+  },
+  "peor": {
+   "ph": 7.64,
+   "ce": 4.8,
+   "mo": 1.72,
+   "caco3": 6.2,
+   "p": 27,
+   "ca": 46,
+   "mg": 3.76,
+   "k": 1.38,
+   "na": 2.0,
+   "cic": 14.3,
+   "sand": 74.5,
+   "clay": 8.2,
+   "root": 20,
+   "cTop": 20,
+   "cBot": 30,
+   "ecw": 0.6
+  },
+  "rango": {
+   "ph": [
+    7.52,
+    7.64
+   ],
+   "ce": [
+    2.4,
+    4.8
+   ],
+   "mo": [
+    1.72,
+    3.8
+   ],
+   "caco3": [
+    5.6,
+    6.2
+   ],
+   "p": [
+    27,
+    31
+   ],
+   "ca": [
+    43,
+    46
+   ],
+   "mg": [
+    3.76,
+    3.88
+   ],
+   "k": [
+    1.38,
+    4.86
+   ],
+   "na": [
+    1.0,
+    2.0
+   ],
+   "root": [
+    20,
+    20
+   ],
+   "cTop": [
+    20,
+    20
+   ],
+   "cBot": [
+    30,
+    30
+   ]
+  }
+ }
+}

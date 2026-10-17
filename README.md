@@ -18,14 +18,16 @@ assets/css/
   base.css                    Colores, tipografías y estilos generales (empieza por aquí para cambiar colores)
   relato.css                  Monitoreo: gráfico de temporada y relato mes a mes
   herbarios.css               Sección Herbarios (clases con prefijo hb-)
+  suelos.css                  Sección Suelos (clases con prefijo su-)
 assets/js/
   core.js                     Carga de datos y navegación (normalmente no se toca)
   jardines.js                 Inicio, Visor, Jardines, Ensayos y Catálogo
   monitoreo.js                Monitoreo satelital y relato NDVI
   herbarios.js                Herbarios
+  suelos.js                   Suelos: diagnóstico suelo–forraje
 
 data/
-  sitio.json                  Configuración: dirección pública del sitio y App de Earth Engine
+  sitio.json                  Configuración: dirección pública, App de Earth Engine, servicio de IA de Suelos
   eeas.geojson                Estaciones (coordenadas, gradiente, registros, estado de la memoria)
   parcelas.geojson            Polígonos de parcelas demostrativas y ensayos
   departamentos.geojson       Límites departamentales (fondo de los mapas)
@@ -42,6 +44,17 @@ herbarios/vista-florida/
   especies.csv                Una ficha por especie: descripción, hábito, origen, interés forrajero
   candidatos.csv              Especies registradas que aún no tienen rótulo
   img/                        Fotos: VF-002.jpg (grande) y VF-002-t.jpg (miniatura)
+
+suelos/
+  ejemplo.json                Caso con el que abre la herramienta: calicata de Vista Florida y su análisis de laboratorio
+  especies.json               Tolerancias de cada especie forrajera (pH, sales, profundidad, drenaje…)
+  referencias-soilgrids.json  13 perfiles SoilGrids de Lambayeque (referencia y respaldo sin conexión)
+  distritos-lambayeque.geojson  Límites distritales para el mapa
+  munsell.json                Tabla de colores Munsell de suelos convertida a RGB
+  img/                        Foto de la calicata de ejemplo
+
+herramientas/ia-suelos/
+  worker.js, LEEME.md         Servicio opcional que lee fotos de calicatas con IA (se instala en Cloudflare)
 ```
 
 La regla general: **el contenido está en `data/` y `herbarios/`; el diseño en `assets/css/`; el comportamiento en `assets/js/`.** Para corregir un texto o un dato casi nunca hace falta tocar código.
@@ -86,6 +99,9 @@ Con el repositorio abierto, presiona la tecla **`.`** (punto). Se abre **github.
 | Cambiar un color en todo el sitio | `assets/css/base.css`, bloque `:root` (modo claro) y `:root[data-theme="dark"]` (modo oscuro) |
 | Corregir un ejemplar del herbario | `herbarios/vista-florida/ejemplares.csv` |
 | Corregir la descripción de una especie del herbario | `herbarios/vista-florida/especies.csv` |
+| Ajustar la tolerancia de una especie en Suelos (pH, sales, profundidad…) | `suelos/especies.json` |
+| Cambiar la calicata o el análisis con el que abre Suelos | `suelos/ejemplo.json` y su foto en `suelos/img/` |
+| Activar la lectura de fotos con IA en Suelos | `herramientas/ia-suelos/LEEME.md`, luego `data/sitio.json` → `ia_suelos_url` |
 
 ### Agregar ejemplares al herbario
 La forma más cómoda es con Excel:
@@ -102,6 +118,13 @@ La forma más cómoda es con Excel:
 ### Actualizar el NDVI con datos reales
 Reemplaza `data/ndvi.json` con la exportación de Earth Engine en el mismo formato: `meses` (lista `AAAA-MM`) y `series` con una lista de valores por id de estación. Los gráficos, el mapa del relato y las cifras de cada mes se recalculan solos; solo los textos de `relato_ndvi.json` hay que revisarlos a mano.
 
+### Sección Suelos
+Tiene cuatro pasos: **Sitio** (mapa para elegir el punto; consulta SoilGrids en vivo), **Perfil y color** (foto de la calicata y color Munsell de cada horizonte), **Fertilidad** (barras con los valores de laboratorio) y **Uso forrajero** (aptitud de cada especie, escenarios de manejo y exportación).
+
+- SoilGrids admite unas 5 consultas por minuto. Si no responde, la sección usa los perfiles de `suelos/referencias-soilgrids.json` y lo indica.
+- Para que una especie de Suelos enlace con su ficha del catálogo, su campo `ficha` debe ser el `id` que tiene en `data/especies.json`.
+- Las tolerancias de `suelos/especies.json` son orientativas (fuentes en el `_ayuda` del archivo); conviene ajustarlas con los resultados de los ensayos de la red.
+
 ### Antes de imprimir rótulos con QR
 Coloca la dirección definitiva del sitio en `data/sitio.json` → `url_publica`. Los QR de las fichas y de los rótulos del herbario apuntan a esa dirección.
 
@@ -117,7 +140,7 @@ Haz commits pequeños y con un mensaje claro: así el historial muestra qué cam
 
 ## Direcciones de cada sección
 
-`#inicio` · `#visor` · `#jardines` · `#jardin/vista-florida` · `#ensayos` · `#catalogo` · `#especie/cuba-22` · `#monitoreo` · `#herbarios` · `#herbario/vista-florida` · `#herbario/vista-florida/ejemplares` · `#herbario/vista-florida/mapa` · `#herbario/vista-florida/sp-cordia-lutea`
+`#inicio` · `#visor` · `#jardines` · `#jardin/vista-florida` · `#ensayos` · `#catalogo` · `#especie/cuba-22` · `#monitoreo` · `#herbarios` · `#herbario/vista-florida` · `#herbario/vista-florida/ejemplares` · `#herbario/vista-florida/mapa` · `#herbario/vista-florida/sp-cordia-lutea` · `#suelos` · `#suelos/perfil` · `#suelos/fertilidad` · `#suelos/uso`
 
 ## Créditos de datos
-Límites departamentales: INEI. Imagen satelital del visor: Esri, Maxar, Earthstar Geographics. Índices de vegetación: Copernicus Sentinel-2 procesado en Google Earth Engine.
+Límites departamentales: INEI. Imagen satelital del visor: Esri, Maxar, Earthstar Geographics. Índices de vegetación: Copernicus Sentinel-2 procesado en Google Earth Engine. Propiedades del suelo: SoilGrids 2.0, ISRIC (CC BY 4.0). Límites distritales de Lambayeque: INEI. Tabla Munsell: renotación de Munsell convertida con colour-science.
